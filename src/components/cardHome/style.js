@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import styled from "@emotion/styled";
+
 const styleCard = {
   width: 1 / 3,
 };
@@ -22,4 +25,10 @@ const styleButton = {
   height: 80,
 };
 
-export { styleCard, styleCardContent, styleFooter, styleButton };
+const ButtonLink = styled(Link)`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+export { styleCard, styleCardContent, styleFooter, styleButton, ButtonLink };
