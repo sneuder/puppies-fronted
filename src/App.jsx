@@ -1,15 +1,14 @@
 import { GlobalStyles } from "@mui/material";
 import styleGlobal from "./styles/globalStyles";
 
-import Home from "./pages/home";
-
+import PublicRoutes from "./routes/public.routes";
 const inputGlobalStyles = <GlobalStyles styles={styleGlobal} />;
 
 function App() {
   return (
     <>
       {inputGlobalStyles}
-      <Home />
+      <PublicRoutes />
     </>
   );
 }
