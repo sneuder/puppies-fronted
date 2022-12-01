@@ -1,13 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { setDogs } from "./reducers";
+import reducers from "./reducers";
+
 const dogsSlice = createSlice({
   name: "dogs",
   initialState: {
     allDogs: [],
   },
-  reducers: {
-    setDogs: setDogs,
-  },
+  reducers: reducers,
 });
 
 export const { setDogs } = dogsSlice.actions;

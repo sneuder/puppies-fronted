@@ -17,7 +17,7 @@ const usePupies = () => {
       headers: { Authorization: `Bearer ${TOKEN}` },
     });
 
-    dispatch(setDogs(res.headers));
+    dispatch(setDogs(res.data));
   };
 
   useEffect(() => {
