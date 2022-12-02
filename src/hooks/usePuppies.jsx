@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { setDogs } from "../redux/slices/dogsSlice";
+import { setDogs, pagDogs } from "../redux/slices/dogsSlice";
 
 import axios from "axios";
 import { TOKEN } from "../constants/index";
 
 const usePupies = () => {
-  const dogs = useSelector((state) => state.dogs.allDogs);
+  const dogs = useSelector((state) => state.dogs.pagDogs);
   const dispatch = useDispatch();
 
   const handlePuppies = async () => {
