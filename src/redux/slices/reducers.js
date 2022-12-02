@@ -7,7 +7,16 @@ const findDog = (state, action) => {
   state.foundDog = { ...dog };
 };
 
+const pagDogs = (state, action) => {
+  const end = action.payload * 10 + 1;
+  const start = (action.payload - 1) * 10;
+
+  const dogs = state.allDogs.slice(start, end);
+  state.pagDogs = dogs;
+};
+
 export default {
   setDogs,
   findDog,
+  pagDogs,
 };
