@@ -25,7 +25,7 @@ const usePage = () => {
   };
 
   useEffect(() => {
-    const page = searchParams.get("page") || 0;
+    const page = searchParams.get("page") || 1;
     handleChangePage("", page);
   }, [dogs]);
 
