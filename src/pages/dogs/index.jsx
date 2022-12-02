@@ -1,18 +1,23 @@
 import CardDogs from "../../components/cardDogs";
 import usePuppies from "../../hooks/usePuppies";
 
-import { Grid } from "@mui/material";
+import Pag from "../../components/pag";
+
+import { Grid, ImageList, ImageListItem } from "@mui/material";
 
 const Dogs = () => {
   const { dogs } = usePuppies();
   return (
-    <Grid container justifyContent={"center"} spacing={4}>
-      {dogs.map((dog) => (
-        <Grid item xs={5}>
-          <CardDogs key={dog.id} dog={dog} />
-        </Grid>
-      ))}
-    </Grid>
+    <>
+      <ImageList variant="masonry" cols={3} gap={16}>
+        {dogs.map((dog) => (
+          <ImageListItem>
+            <CardDogs key={dog.id} dog={dog} />
+          </ImageListItem>
+        ))}
+      </ImageList>
+      <Pag />
+    </>
   );
 };
 

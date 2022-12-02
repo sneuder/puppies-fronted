@@ -4,10 +4,11 @@ import reducers from "./reducers";
 const dogsSlice = createSlice({
   name: "dogs",
   initialState: {
-    allDogs: [],
+    allDogs: ["", "", "", "", "", "", "", ""],
+    foundDog: {},
   },
   reducers: reducers,
 });
 
-export const { setDogs } = dogsSlice.actions;
+export const { setDogs, findDog } = dogsSlice.actions;
 export default dogsSlice.reducer;
