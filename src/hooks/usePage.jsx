@@ -20,6 +20,10 @@ const usePage = () => {
     return Math.ceil(dogs.length / 10);
   };
 
+  const handlePageNumber = () => {
+    return Number(searchParams.get("page"));
+  };
+
   useEffect(() => {
     const page = searchParams.get("page") || 0;
     handleChangePage("", page);
@@ -28,6 +32,7 @@ const usePage = () => {
   return {
     handleChangePage,
     handleSizePage,
+    handlePageNumber,
   };
 };
 
