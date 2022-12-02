@@ -1,7 +1,9 @@
 import { Pagination } from "@mui/material";
+import usePage from "../../hooks/usePage";
 
 const Pag = () => {
-  return <Pagination count={10} />;
+  const { handleChangePage, handleSizePage } = usePage();
+  return <Pagination count={handleSizePage()} onChange={handleChangePage} />;
 };
 
 export default Pag;
