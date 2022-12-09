@@ -1,11 +1,13 @@
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from 'react-router-dom';
 
-import { useDispatch, useSelector } from "react-redux";
-import { pagDogs } from "../redux/slices/dogsSlice";
-import { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { pagDogs } from '../redux/slices/dogsSlice';
+import { useEffect } from 'react';
 
 const usePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const page = searchParams.get('page') || 1;
+
   const dogs = useSelector((state) => state.dogs.allDogs);
   const dispatch = useDispatch();
 
@@ -21,12 +23,11 @@ const usePage = () => {
   };
 
   const handlePageNumber = () => {
-    return Number(searchParams.get("page"));
+    return Number(page);
   };
 
   useEffect(() => {
-    const page = searchParams.get("page") || 1;
-    handleChangePage("", page);
+    handleChangePage('', page);
   }, [dogs]);
 
   return {
