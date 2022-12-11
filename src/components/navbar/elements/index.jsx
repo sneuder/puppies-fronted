@@ -1,22 +1,33 @@
 import useFilter from '../../../hooks/useFilter';
-import { ButtonLink } from './style';
+
+import { styleButton, ButtonLink, styleInputs } from './style';
+
 import {
   Select,
   MenuItem,
   InputLabel,
   FormControl,
   Button,
+  TextField,
 } from '@mui/material';
+
+export const SearchDogs = () => {
+  return (
+    <TextField
+      size="small"
+      sx={styleInputs}
+    />
+  );
+};
 
 export const FilterTemp = () => {
   const { temps } = useFilter();
 
   return (
     <FormControl>
-      <InputLabel id="filter-by-temps">Temperaments</InputLabel>
       <Select
-        labelId="filter-by-temps"
-        label={'Temperaments'}
+        size="small"
+        sx={styleInputs}
       >
         {temps.map(({ temperament, id }) => (
           <MenuItem
@@ -34,10 +45,9 @@ export const FilterTemp = () => {
 export const FilterAlpha = () => {
   return (
     <FormControl>
-      <InputLabel id="filter-by-alphabet">Order by name</InputLabel>
       <Select
-        labelId="filter-by-alphabet"
-        label={'alphabet'}
+        size="small"
+        sx={styleInputs}
       >
         <MenuItem value={'A-Z'}>A - Z</MenuItem>
         <MenuItem value={'Z-A'}>Z - A</MenuItem>
@@ -49,7 +59,13 @@ export const FilterAlpha = () => {
 export const CreateDog = () => {
   return (
     <ButtonLink to="/createDog">
-      <Button variant="contained">Create Dog</Button>
+      <Button
+        variant="contained"
+        sx={styleButton}
+        size="small"
+      >
+        Create Dog
+      </Button>
     </ButtonLink>
   );
 };

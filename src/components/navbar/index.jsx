@@ -1,7 +1,10 @@
+import useNavbar from '../../hooks/useNavbar';
 import NavbarDesktop from './desktop';
 
 const Navbar = () => {
-  return <NavbarDesktop />;
+  const showOptions = useNavbar();
+
+  return <NavbarDesktop showOptions={showOptions} />;
 };
 
 export default Navbar;

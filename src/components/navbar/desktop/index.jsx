@@ -1,26 +1,28 @@
-import { Grid, TextField, Box } from '@mui/material';
+import { Grid, Box } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import { CreateDog, FilterAlpha, FilterTemp } from '../elements';
-import { styleBackground } from './style';
+import { CreateDog, FilterAlpha, FilterTemp, SearchDogs } from '../elements';
 
-const NavbarDesktop = () => {
+import { styleBackground, ContainerOptions } from './style';
+
+const NavbarDesktop = ({ showOptions }) => {
+  const { toShowDesktop, toShowMobile } = showOptions;
   return (
     <Grid
       container
       justifyContent={'space-between'}
+      alignItems={'center'}
       p={2}
-      spacing={1}
       sx={styleBackground}
     >
+      <SearchDogs />
       <Grid
         container
         item
         xs={3}
-      >
-        <TextField />
-      </Grid>
-      <Grid
+      ></Grid>
+      <ContainerOptions
+        toShow={toShowDesktop}
         container
         item
         gap={2}
@@ -30,8 +32,17 @@ const NavbarDesktop = () => {
         <FilterTemp />
         <FilterAlpha />
         <CreateDog />
-        {/* <MenuIcon /> */}
-      </Grid>
+      </ContainerOptions>
+      <ContainerOptions
+        toShow={toShowMobile}
+        container
+        item
+        gap={2}
+        xs={5}
+        justifyContent={'end'}
+      >
+        <MenuIcon />
+      </ContainerOptions>
     </Grid>
   );
 };
