@@ -12,7 +12,7 @@ const usePuppy = () => {
   const dispatch = useDispatch();
 
   const handlePuppy = async () => {
-    reqAxios('get', `/dogs/${dogId}`).then(({ data }) => {
+    reqAxios('get', `/dogs/${dogId}`).then((data) => {
       dispatch(findDog(data));
     });
   };

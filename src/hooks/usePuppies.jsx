@@ -10,7 +10,7 @@ const usePupies = () => {
   const dispatch = useDispatch();
 
   const handlePuppies = () => {
-    reqAxios('get', '/dogs/allDogs').then(({ data }) => {
+    reqAxios('get', '/dogs/allDogs').then((data) => {
       dispatch(setDogs(data));
     });
   };
