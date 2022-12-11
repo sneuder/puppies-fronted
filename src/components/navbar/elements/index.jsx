@@ -30,7 +30,14 @@ export const FilterTemp = () => {
       <Select
         size="small"
         sx={styleInputs}
+        defaultValue={'selected'}
       >
+        <MenuItem
+          value={'selected'}
+          disabled
+        >
+          Filter by Temps
+        </MenuItem>
         {temps.map(({ temperament, id }) => (
           <MenuItem
             key={id}
@@ -50,9 +57,10 @@ export const FilterAlpha = () => {
       <Select
         size="small"
         sx={styleInputs}
+        defaultValue={'selected'}
       >
         <MenuItem
-          value={''}
+          value={'selected'}
           disabled
         >
           Order by name
