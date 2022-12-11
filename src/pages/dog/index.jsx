@@ -1,5 +1,9 @@
+import CardDog from "../../components/cardDog";
+import usePuppy from "../../hooks/usePuppy";
+
 const Dog = () => {
-  return <h1>Dog</h1>;
+  const dog = usePuppy();
+  return <CardDog dog={dog} />;
 };
 
 export default Dog;
