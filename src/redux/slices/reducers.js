@@ -4,9 +4,7 @@ const setDogs = (state, action) => {
 };
 
 const findDog = (state, action) => {
-  console.log(action);
-  const dog = state.allDogs.find((dog) => dog.id == action.payload);
-  state.foundDog = { ...dog };
+  state.foundDog = action.payload;
 };
 
 const pagDogs = (state, action) => {
