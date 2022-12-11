@@ -34,7 +34,7 @@ const NavbarDesktop = ({ showOptions }) => {
         container
         item
         gap={2}
-        md={5}
+        md={6}
         justifyContent={'end'}
       >
         <FilterTemp />
