@@ -1,27 +1,28 @@
-import { Link } from "react-router-dom";
-import styled from "@emotion/styled";
+import { Link } from 'react-router-dom';
+import styled from '@emotion/styled';
+import colorPallete from '../../styles/colorPallete';
 
 const styleCard = {
   width: 1 / 3,
 };
 
 const styleCardContent = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  gap: "40px",
-  paddingBottom: "60px",
-  paddingTop: "26px",
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: '40px',
+  paddingBottom: '60px',
+  paddingTop: '26px',
 };
 
 const styleFooter = {
-  backgroundColor: "#231f20",
+  backgroundColor: colorPallete.dark,
   p: 2,
 };
 
 const styleButton = {
-  background: "linear-gradient(90deg,#642b73,#c6426e)",
-  width: "90%",
+  background: colorPallete.gradients.purpleRed,
+  width: '90%',
   height: 80,
 };
 

@@ -2,6 +2,7 @@ import { Grid, TextField, Box } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
 import { CreateDog, FilterAlpha, FilterTemp } from '../elements';
+import { styleBackground } from './style';
 
 const NavbarDesktop = () => {
   return (
@@ -10,6 +11,7 @@ const NavbarDesktop = () => {
       justifyContent={'space-between'}
       p={2}
       spacing={1}
+      sx={styleBackground}
     >
       <Grid
         container
