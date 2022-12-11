@@ -1,8 +1,9 @@
+import Navbar from '../../components/navbar';
 import CardDogs from '../../components/cardDogs';
+import Pag from '../../components/pag';
+
 import usePuppies from '../../hooks/usePuppies';
 import useImageList from '../../hooks/useImageList';
-
-import Pag from '../../components/pag';
 
 import { Grid, ImageList, ImageListItem } from '@mui/material';
 
@@ -15,6 +16,7 @@ const Dogs = () => {
       container
       pb={2}
     >
+      <Navbar />
       <ImageList
         variant="masonry"
         cols={listCols}
