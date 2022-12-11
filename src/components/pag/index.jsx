@@ -1,14 +1,19 @@
-import { Pagination } from "@mui/material";
-import usePage from "../../hooks/usePage";
+import { Pagination, Grid } from '@mui/material';
+import usePage from '../../hooks/usePage';
 
 const Pag = () => {
   const { handleChangePage, handleSizePage, handlePageNumber } = usePage();
   return (
-    <Pagination
-      count={handleSizePage()}
-      defaultPage={handlePageNumber()}
-      onChange={handleChangePage}
-    />
+    <Grid
+      container
+      justifyContent={'center'}
+    >
+      <Pagination
+        count={handleSizePage()}
+        defaultPage={handlePageNumber()}
+        onChange={handleChangePage}
+      />
+    </Grid>
   );
 };
 
