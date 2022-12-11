@@ -1,6 +1,6 @@
 import useFilter from '../../../hooks/useFilter';
-
-import { styleButton, ButtonLink, styleInputs } from './style';
+import MenuIcon from '@mui/icons-material/Menu';
+import { styleButton, ButtonLink, styleInputs, styleMenuMobile } from './style';
 
 import {
   Select,
@@ -14,6 +14,8 @@ import {
 export const SearchDogs = () => {
   return (
     <TextField
+      fullWidth
+      placeholder="Search dog"
       size="small"
       sx={styleInputs}
     />
@@ -49,6 +51,12 @@ export const FilterAlpha = () => {
         size="small"
         sx={styleInputs}
       >
+        <MenuItem
+          value={''}
+          disabled
+        >
+          Order by name
+        </MenuItem>
         <MenuItem value={'A-Z'}>A - Z</MenuItem>
         <MenuItem value={'Z-A'}>Z - A</MenuItem>
       </Select>
@@ -68,4 +76,8 @@ export const CreateDog = () => {
       </Button>
     </ButtonLink>
   );
+};
+
+export const MenuMobile = () => {
+  return <MenuIcon sx={styleMenuMobile} />;
 };

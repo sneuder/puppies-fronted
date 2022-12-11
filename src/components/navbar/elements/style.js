@@ -9,6 +9,11 @@ const ButtonLink = styled(Link)`
   justify-content: center;
 `;
 
+const styleMenuMobile = {
+  color: '#fff',
+  fontSize: '36px',
+};
+
 const styleButton = {
   background: colorPallete.gradients.purpleRed,
   width: '200px',
@@ -20,4 +25,4 @@ const styleInputs = {
   borderRadius: '4px',
 };
 
-export { ButtonLink, styleButton, styleInputs };
+export { ButtonLink, styleButton, styleInputs, styleMenuMobile };
