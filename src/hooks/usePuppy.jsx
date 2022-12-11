@@ -4,9 +4,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { findDog } from '../redux/slices/dogsSlice';
-import axios from 'axios';
-
-import { TOKEN } from '../constants/index';
+import reqAxios from '../utils/axios';
 
 const usePuppy = () => {
   const { dogId } = useParams();
@@ -14,13 +12,9 @@ const usePuppy = () => {
   const dispatch = useDispatch();
 
   const handlePuppy = async () => {
-    const { data } = await axios({
-      method: 'GET',
-      url: `https://puppies-service.onrender.com/api/v1/dogs/${dogId}`,
-      headers: { Authorization: `Bearer ${TOKEN}` },
+    reqAxios('get', `/dogs/${dogId}`).then(({ data }) => {
+      dispatch(findDog(data));
     });
-
-    dispatch(findDog(data));
   };
 
   useEffect(() => {
