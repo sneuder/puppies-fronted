@@ -3,13 +3,11 @@ import CardDogs from '../../components/cardDogs';
 import Pag from '../../components/pag';
 
 import usePuppies from '../../hooks/usePuppies';
-import useImageList from '../../hooks/useImageList';
 
-import { Grid, ImageList, ImageListItem } from '@mui/material';
+import { Grid } from '@mui/material';
 
 const Dogs = () => {
   const { dogs } = usePuppies();
-  const { listCols } = useImageList();
 
   return (
     <Grid
@@ -17,21 +15,7 @@ const Dogs = () => {
       pb={2}
     >
       <Navbar />
-      <ImageList
-        variant="masonry"
-        cols={listCols}
-        gap={16}
-        sx={{ padding: '16px' }}
-      >
-        {dogs.map((dog) => (
-          <ImageListItem>
-            <CardDogs
-              key={dog.id}
-              dog={dog}
-            />
-          </ImageListItem>
-        ))}
-      </ImageList>
+      <CardDogs dogs={dogs} />
       <Pag />
     </Grid>
   );

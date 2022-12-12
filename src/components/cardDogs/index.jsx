@@ -1,29 +1,39 @@
 import {
-  Box,
   Grid,
   Chip,
   Card,
-  CardMedia,
   CardContent,
   Typography,
   Skeleton,
+  ImageList,
+  ImageListItem,
 } from '@mui/material';
+
+import useImageList from '../../hooks/useImageList';
 
 import { styleCard, ImageDog, CardLink } from './style';
 
-const CardDogs = ({ dog }) => {
-  const { name, image, id, temps } = dog;
+const CardDogs = ({ dogs }) => {
+  const { listCols } = useImageList();
 
-  if (!dog) {
-    return (
-      <Skeleton
-        variant="rounded"
-        width={210}
-        height={60}
-      />
-    );
-  }
+  return (
+    <ImageList
+      variant="masonry"
+      cols={listCols}
+      gap={16}
+      sx={{ padding: '16px', width: '100%' }}
+    >
+      {dogs.map((dog) => (
+        <ImageListItem>
+          {dog != '' ? <Dogs dog={dog} /> : <DogsLoading />}
+        </ImageListItem>
+      ))}
+    </ImageList>
+  );
+};
 
+function Dogs({ dog }) {
+  const { id, image, name, temps } = dog;
   return (
     <Card sx={styleCard}>
       <CardLink to={`/dogs/${id}`}>
@@ -50,6 +60,15 @@ const CardDogs = ({ dog }) => {
       </CardContent>
     </Card>
   );
-};
+}
+
+function DogsLoading() {
+  return (
+    <Skeleton
+      variant="rounded"
+      height={200}
+    />
+  );
+}
 
 export default CardDogs;

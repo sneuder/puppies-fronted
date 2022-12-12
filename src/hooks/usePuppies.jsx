@@ -6,7 +6,13 @@ import { setDogs } from '../redux/slices/dogsSlice';
 import reqAxios from '../utils/axios';
 
 const usePupies = () => {
-  const dogs = useSelector((state) => state.dogs.pagDogs);
+  const dogs = useSelector((state) => {
+    const { pagDogs } = state.dogs;
+
+    if (pagDogs.length === 0) return ['', '', '', '', '', '', '', '', '', ''];
+    return pagDogs;
+  });
+
   const dispatch = useDispatch();
 
   const handlePuppies = () => {
