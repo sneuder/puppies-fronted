@@ -3,7 +3,22 @@ import styled from '@emotion/styled';
 import colorPallete from '../../styles/colorPallete';
 
 const styleCard = {
-  width: 1 / 3,
+  maxWidth: '440px',
+
+  width: {
+    xs: '90%',
+    sm: '50%',
+    md: '35%',
+  },
+
+  height: {
+    xs: '70%',
+    sm: 'auto',
+  },
+
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
 };
 
 const styleCardContent = {

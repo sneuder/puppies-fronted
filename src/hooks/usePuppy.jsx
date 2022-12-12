@@ -17,8 +17,16 @@ const usePuppy = () => {
     });
   };
 
+  const removePuppy = () => {
+    dispatch(findDog({}));
+  };
+
   useEffect(() => {
     handlePuppy();
+
+    return () => {
+      removePuppy();
+    };
   }, []);
 
   return dog;
