@@ -1,34 +1,32 @@
 import { useSearchParams } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { pagDogs } from '../redux/slices/dogsSlice';
-import { useEffect } from 'react';
+import { updateQuery } from '../redux/queries/queriesSlices';
 
 const usePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const page = searchParams.get('page') || 1;
+  const browserPage = searchParams.get('page') || 1;
 
-  const dogs = useSelector((state) => state.dogs.allDogs);
+  const numPags = useSelector((state) => state.dogs.numPags);
   const dispatch = useDispatch();
 
   const handleChangePage = (event, value) => {
-    dispatch(pagDogs(value));
-    setSearchParams({
-      page: value,
-    });
+    if (browserPage !== value) {
+      const params = {
+        keyQuery: 'page',
+        valueQuery: value,
+      };
+      dispatch(updateQuery(params));
+    }
   };
 
   const handleSizePage = () => {
-    return Math.ceil(dogs.length / 10);
+    return Math.ceil(numPags / 10);
   };
 
   const handlePageNumber = () => {
-    return Number(page);
+    return Number(browserPage);
   };
-
-  useEffect(() => {
-    handleChangePage('', page);
-  }, [dogs]);
 
   return {
     handleChangePage,
