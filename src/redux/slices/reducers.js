@@ -1,18 +1,16 @@
-const setDogs = (state, action) => {
-  state.allDogs = action.payload;
-  state.immutableDogs = action.payload;
+const pagDogs = (state, action) => {
+  if (action.payload) {
+    state.pagDogs = action.payload.rows;
+    state.numPags = action.payload.count;
+    return;
+  }
+
+  state.pagDogs = [];
+  state.numPags = 0;
 };
 
 const findDog = (state, action) => {
   state.foundDog = action.payload;
-};
-
-const pagDogs = (state, action) => {
-  const end = action.payload * 10 + 1;
-  const start = (action.payload - 1) * 10;
-
-  const dogs = state.allDogs.slice(start, end);
-  state.pagDogs = dogs;
 };
 
 const findDogs = (state, action) => {
@@ -26,7 +24,6 @@ const findDogs = (state, action) => {
 };
 
 export default {
-  setDogs,
   findDog,
   findDogs,
   pagDogs,

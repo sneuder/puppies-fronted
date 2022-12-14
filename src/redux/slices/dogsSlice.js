@@ -1,16 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
-import reducers from "./reducers";
+import { createSlice } from '@reduxjs/toolkit';
+import reducers from './reducers';
 
 const dogsSlice = createSlice({
-  name: "dogs",
+  name: 'dogs',
   initialState: {
-    immutableDogs: [],
-    allDogs: [],
     pagDogs: [],
     foundDog: {},
+    numPags: 0,
   },
   reducers: reducers,
 });
 
-export const { setDogs, findDog, findDogs, pagDogs } = dogsSlice.actions;
+export const { findDog, findDogs, pagDogs } = dogsSlice.actions;
 export default dogsSlice.reducer;
