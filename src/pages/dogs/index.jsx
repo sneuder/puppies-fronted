@@ -5,8 +5,10 @@ import Pag from '../../components/pag';
 import usePuppies from '../../hooks/usePuppies';
 
 import { Grid } from '@mui/material';
+import useQueries from '../../hooks/useQueries';
 
 const Dogs = () => {
+  useQueries();
   const { dogs } = usePuppies();
 
   return (
