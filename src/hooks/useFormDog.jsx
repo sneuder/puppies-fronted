@@ -20,6 +20,48 @@ const useFormDog = () => {
   });
 
   const handleDog = () => {
+    const validation = {};
+
+    const regexString = /^[a-zA-Z\s]+$/;
+    const regexNum = /\d/g;
+
+    const propToCheck = ['name', 'bredFor', 'breed_group'];
+    const measureToCheck = ['lifeSpan', 'weight'];
+    const attrToCheck = ['countries', 'temperament'];
+
+    propToCheck.forEach((toCheck) => {
+      if (regexString.test(dogFormData[toCheck])) return;
+      if (dogFormData[toCheck] === '') {
+        return (validation[toCheck] = 'Complete this field');
+      }
+      validation[toCheck] = 'Numbers and symbols not allowed';
+    });
+
+    measureToCheck.forEach((toCheck) => {
+      if (
+        regexNum.test(dogFormData[toCheck].to) &&
+        regexNum.test(dogFormData[toCheck].from)
+      ) {
+        if (dogFormData[toCheck].from <= dogFormData[toCheck].to) return;
+        return (validation[toCheck] = 'From is higher than To');
+      }
+
+      if (dogFormData[toCheck].to === '' || dogFormData[toCheck].from === '')
+        return (validation[toCheck] = 'Complete this field');
+
+      validation[toCheck] = 'Symbols and characters not allowed';
+    });
+
+    attrToCheck.forEach((toCheck) => {
+      if (dogFormData[toCheck].length === 0) return;
+      if (dogFormData[toCheck].some((item) => regexString.test(item))) return;
+      validation[toCheck] = 'Numbers and symbols not allowed';
+    });
+
+    setValidations({ ...{} });
+    if (validation)
+      return setValidations((prevState) => ({ ...prevState, ...validation }));
+
     reqAxios('post', '/dogs/newDog', dogFormData, '').then((data) => {});
   };
 
@@ -33,12 +75,14 @@ const useFormDog = () => {
   };
 
   const setAttr = (e, attr) => {
-    dispatch(
-      updateAttributes({
-        keyForm: attr,
-        valueForm: e.target.value,
-      })
-    );
+    if (!selectedAttrs[attr].includes(e.target.value)) {
+      dispatch(
+        updateAttributes({
+          keyForm: attr,
+          valueForm: e.target.value,
+        })
+      );
+    }
   };
 
   const deleteAttr = (temp, attr) => {
@@ -67,6 +111,7 @@ const useFormDog = () => {
   }, []);
 
   return {
+    validations,
     attributes,
     selectedAttrs,
     setAttr,

@@ -1,8 +1,9 @@
-import { Card, Grid, Typography } from '@mui/material';
+import { Card, Typography, Alert } from '@mui/material';
 
 import {
   ButtonForm,
   InputForm,
+  InputFormNumber,
   SelectForm,
   SelectedElements,
 } from '../../shared/inputs';
@@ -18,6 +19,7 @@ import useFormDog from '../../hooks/useFormDog';
 
 const Form = () => {
   const {
+    validations,
     attributes,
     selectedAttrs,
     setAttr,
@@ -30,24 +32,38 @@ const Form = () => {
     <Card sx={styleCard}>
       <GeneralContainer>
         <SubContainerFull>
-          <Typography>Create your Puppy</Typography>
+          <Typography variant="h5">Create your Puppy</Typography>
         </SubContainerFull>
 
-        <SubContainerFull>
-          <InputForm
-            labelProp={'Dog name'}
-            event={setProperties}
-            attr={'name'}
-          />
-        </SubContainerFull>
+        <GeneralContainer gapProp={1}>
+          <SubContainerFull>
+            <InputForm
+              labelProp={'Dog name'}
+              event={setProperties}
+              attr={'name'}
+            />
+          </SubContainerFull>
+          {validations.name && (
+            <SubContainerFull>
+              <Typography variant="body2">{validations.name}</Typography>
+            </SubContainerFull>
+          )}
+        </GeneralContainer>
 
-        <SubContainerFull>
-          <InputForm
-            labelProp={'Bred for'}
-            event={setProperties}
-            attr={'bredFor'}
-          />
-        </SubContainerFull>
+        <GeneralContainer gapProp={1}>
+          <SubContainerFull>
+            <InputForm
+              labelProp={'Bred for'}
+              event={setProperties}
+              attr={'bredFor'}
+            />
+          </SubContainerFull>
+          {validations.bredFor && (
+            <SubContainerFull>
+              <Typography variant="body2">{validations.bredFor}</Typography>
+            </SubContainerFull>
+          )}
+        </GeneralContainer>
 
         <GeneralContainer gapProp={1}>
           <SubContainerFull>
@@ -55,7 +71,7 @@ const Form = () => {
           </SubContainerFull>
           <GeneralContainer>
             <SubContainerMulti space={6}>
-              <InputForm
+              <InputFormNumber
                 labelProp={'From'}
                 event={setProperties}
                 attr={'lifeSpan'}
@@ -63,7 +79,7 @@ const Form = () => {
               />
             </SubContainerMulti>
             <SubContainerMulti space={6}>
-              <InputForm
+              <InputFormNumber
                 labelProp={'To'}
                 event={setProperties}
                 attr={'lifeSpan'}
@@ -71,6 +87,11 @@ const Form = () => {
               />
             </SubContainerMulti>
           </GeneralContainer>
+          {validations.lifeSpan && (
+            <SubContainerFull>
+              <Typography variant="body2">{validations.lifeSpan}</Typography>
+            </SubContainerFull>
+          )}
         </GeneralContainer>
 
         <GeneralContainer gapProp={1}>
@@ -78,7 +99,7 @@ const Form = () => {
             <SelectForm
               defaultItem={'Select Breed Group'}
               items={attributes.breeds}
-              event={setAttr}
+              event={setProperties}
               attr={'breed_group'}
             />
           </SubContainerMulti>
@@ -93,7 +114,7 @@ const Form = () => {
           </SubContainerFull>
           <GeneralContainer>
             <SubContainerMulti space={6}>
-              <InputForm
+              <InputFormNumber
                 labelProp={'From'}
                 event={setProperties}
                 attr={'weight'}
@@ -101,14 +122,19 @@ const Form = () => {
               />
             </SubContainerMulti>
             <SubContainerMulti space={6}>
-              <InputForm
+              <InputFormNumber
                 labelProp={'To'}
                 event={setProperties}
                 attr={'weight'}
-                subAttr={'from'}
+                subAttr={'to'}
               />
             </SubContainerMulti>
           </GeneralContainer>
+          {validations.weight && (
+            <SubContainerFull>
+              <Typography variant="body2">{validations.weight}</Typography>
+            </SubContainerFull>
+          )}
         </GeneralContainer>
 
         <GeneralContainer gapProp={1}>

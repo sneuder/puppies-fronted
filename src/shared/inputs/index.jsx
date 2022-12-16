@@ -12,6 +12,19 @@ export const InputForm = ({ labelProp, event, attr, subAttr }) => {
   );
 };
 
+export const InputFormNumber = ({ labelProp, event, attr, subAttr }) => {
+  return (
+    <TextField
+      type={'number'}
+      fullWidth
+      size="small"
+      variant="outlined"
+      label={labelProp}
+      onChange={(e) => event(e, attr, subAttr)}
+    />
+  );
+};
+
 export const SelectForm = ({ defaultItem, items, event, attr }) => {
   return (
     <Select

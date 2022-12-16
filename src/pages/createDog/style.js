@@ -2,10 +2,13 @@ import background from '../../assets/img/background.jpg';
 
 const styleCreateDog = {
   maxWidth: '100vw',
-  maxHeight: '100vh',
-  height: '100vh',
+  minHeight: '100vh',
   backgroundImage: `url(${background})`,
   backgroundSize: 'cover',
+  padding: {
+    xs: 0,
+    md: 6,
+  },
 };
 
 export { styleCreateDog };
