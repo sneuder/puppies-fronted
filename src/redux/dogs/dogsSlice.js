@@ -7,9 +7,21 @@ const dogsSlice = createSlice({
     pagDogs: [],
     foundDog: {},
     numPags: 0,
+    formDog: {
+      temperament: [],
+      breed_group: [],
+      countries: [],
+    },
   },
   reducers: reducers,
 });
 
-export const { findDog, findDogs, pagDogs } = dogsSlice.actions;
+export const {
+  findDog,
+  findDogs,
+  pagDogs,
+  updateAttributes,
+  deleteAttributes,
+} = dogsSlice.actions;
+
 export default dogsSlice.reducer;

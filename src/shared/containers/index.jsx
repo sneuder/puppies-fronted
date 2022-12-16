@@ -5,7 +5,8 @@ export const GeneralContainer = ({ children, gapProp }) => {
     <Grid
       item
       container
-      spacing={gapProp || 2}
+      rowSpacing={gapProp || 2}
+      columnSpacing={2}
     >
       {children}
     </Grid>
@@ -16,7 +17,6 @@ export const SubContainerFull = ({ children }) => {
   return (
     <Grid
       item
-      direction={'column'}
       alignItems={'stretch'}
       xs={12}
     >

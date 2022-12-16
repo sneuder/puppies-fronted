@@ -23,8 +23,22 @@ const findDogs = (state, action) => {
   state.allDogs = filteredDogs;
 };
 
+const updateAttributes = (state, action) => {
+  const { keyForm, valueForm } = action.payload;
+  state.formDog[keyForm] = [...state.formDog[keyForm], valueForm];
+};
+
+const deleteAttributes = (state, action) => {
+  const { attribute, tempToRemove } = action.payload;
+  state.formDog[attribute] = state.formDog[attribute].filter(
+    (attr) => attr !== tempToRemove
+  );
+};
+
 export default {
   findDog,
   findDogs,
   pagDogs,
+  updateAttributes,
+  deleteAttributes,
 };
