@@ -8,9 +8,19 @@ const dogsSlice = createSlice({
     foundDog: {},
     numPags: 0,
     formDog: {
-      temperament: [],
+      name: '',
+      bredFor: '',
       breed_group: [],
+      temperament: [],
       countries: [],
+      lifeSpan: {
+        from: '',
+        to: '',
+      },
+      weight: {
+        from: '',
+        to: '',
+      },
     },
   },
   reducers: reducers,
@@ -22,6 +32,7 @@ export const {
   pagDogs,
   updateAttributes,
   deleteAttributes,
+  updateProperties,
 } = dogsSlice.actions;
 
 export default dogsSlice.reducer;

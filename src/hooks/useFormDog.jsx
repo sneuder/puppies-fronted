@@ -1,24 +1,26 @@
 import { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateAttributes, deleteAttributes } from '../redux/dogs/dogsSlice';
+import {
+  updateAttributes,
+  deleteAttributes,
+  updateProperties,
+} from '../redux/dogs/dogsSlice';
 
 import reqAxios from '../utils/axios';
 
 const useFormDog = () => {
-  const { register, handleSubmit } = useForm();
-
   const [attributes, setAttributes] = useState({});
+  const [validations, setValidations] = useState({});
 
   const dispatch = useDispatch();
+  const dogFormData = useSelector((state) => state.dogs.formDog);
   const selectedAttrs = useSelector((state) => {
     const { temperament, breed_group, countries } = state.dogs.formDog;
     return { temperament, breed_group, countries };
   });
 
-  const handleDog = (data) => {
-    console.log(data);
-    console.log('bitch');
+  const handleDog = () => {
+    reqAxios('post', '/dogs/newDog', dogFormData, '').then((data) => {});
   };
 
   const getAttr = (attr, url) => {
@@ -48,6 +50,16 @@ const useFormDog = () => {
     );
   };
 
+  const setProperties = (e, attr, subAttr) => {
+    dispatch(
+      updateProperties({
+        keyForm: attr,
+        subKeyForm: subAttr,
+        valueForm: e.target.value,
+      })
+    );
+  };
+
   useEffect(() => {
     getAttr('temperaments', '/temps/allTemps');
     getAttr('breeds', '/breeds/allBreeds');
@@ -59,11 +71,8 @@ const useFormDog = () => {
     selectedAttrs,
     setAttr,
     deleteAttr,
-    dogForm: {
-      register,
-      handleSubmit,
-      handleDog,
-    },
+    setProperties,
+    handleDog,
   };
 };
 

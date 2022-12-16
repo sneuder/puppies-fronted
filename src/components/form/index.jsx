@@ -17,9 +17,14 @@ import {
 import useFormDog from '../../hooks/useFormDog';
 
 const Form = () => {
-  const { dogForm, attributes, selectedAttrs, setAttr, deleteAttr } =
-    useFormDog();
-  const { handleSubmit, handleDog, register } = dogForm;
+  const {
+    attributes,
+    selectedAttrs,
+    setAttr,
+    deleteAttr,
+    setProperties,
+    handleDog,
+  } = useFormDog();
 
   return (
     <Card sx={styleCard}>
@@ -31,24 +36,39 @@ const Form = () => {
         <SubContainerFull>
           <InputForm
             labelProp={'Dog name'}
-            {...register('name')}
+            event={setProperties}
+            attr={'name'}
           />
         </SubContainerFull>
 
         <SubContainerFull>
-          <InputForm labelProp={'Bred for'} />
+          <InputForm
+            labelProp={'Bred for'}
+            event={setProperties}
+            attr={'bredFor'}
+          />
         </SubContainerFull>
 
         <GeneralContainer gapProp={1}>
           <SubContainerFull>
-            <Typography>Life Span</Typography>
+            <Typography>Life Span (Years)</Typography>
           </SubContainerFull>
           <GeneralContainer>
             <SubContainerMulti space={6}>
-              <InputForm labelProp={'From'} />
+              <InputForm
+                labelProp={'From'}
+                event={setProperties}
+                attr={'lifeSpan'}
+                subAttr={'from'}
+              />
             </SubContainerMulti>
             <SubContainerMulti space={6}>
-              <InputForm labelProp={'To'} />
+              <InputForm
+                labelProp={'To'}
+                event={setProperties}
+                attr={'lifeSpan'}
+                subAttr={'to'}
+              />
             </SubContainerMulti>
           </GeneralContainer>
         </GeneralContainer>
@@ -73,10 +93,20 @@ const Form = () => {
           </SubContainerFull>
           <GeneralContainer>
             <SubContainerMulti space={6}>
-              <InputForm labelProp={'From'} />
+              <InputForm
+                labelProp={'From'}
+                event={setProperties}
+                attr={'weight'}
+                subAttr={'from'}
+              />
             </SubContainerMulti>
             <SubContainerMulti space={6}>
-              <InputForm labelProp={'To'} />
+              <InputForm
+                labelProp={'To'}
+                event={setProperties}
+                attr={'weight'}
+                subAttr={'from'}
+              />
             </SubContainerMulti>
           </GeneralContainer>
         </GeneralContainer>
@@ -126,7 +156,7 @@ const Form = () => {
         <SubContainerFull>
           <ButtonForm
             buttonContent={'New Puppy'}
-            type="submit"
+            event={handleDog}
           />
         </SubContainerFull>
       </GeneralContainer>

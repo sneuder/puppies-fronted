@@ -35,10 +35,17 @@ const deleteAttributes = (state, action) => {
   );
 };
 
+const updateProperties = (state, action) => {
+  const { keyForm, subKeyForm, valueForm } = action.payload;
+  if (subKeyForm) state.formDog[keyForm][subKeyForm] = valueForm;
+  if (!subKeyForm) state.formDog[keyForm] = valueForm;
+};
+
 export default {
   findDog,
   findDogs,
   pagDogs,
   updateAttributes,
   deleteAttributes,
+  updateProperties,
 };

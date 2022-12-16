@@ -1,12 +1,13 @@
 import { Button, TextField, Select, MenuItem, Chip, Grid } from '@mui/material';
 
-export const InputForm = ({ labelProp }) => {
+export const InputForm = ({ labelProp, event, attr, subAttr }) => {
   return (
     <TextField
       fullWidth
       size="small"
       variant="outlined"
       label={labelProp}
+      onChange={(e) => event(e, attr, subAttr)}
     />
   );
 };
@@ -17,10 +18,10 @@ export const SelectForm = ({ defaultItem, items, event, attr }) => {
       fullWidth
       size={'small'}
       onChange={(e) => event(e, attr)}
+      defaultValue={defaultItem}
     >
       <MenuItem
         value={defaultItem}
-        defaultValue={defaultItem}
         selected
         disabled
       >
@@ -39,13 +40,14 @@ export const SelectForm = ({ defaultItem, items, event, attr }) => {
   );
 };
 
-export const ButtonForm = ({ buttonContent }) => {
+export const ButtonForm = ({ buttonContent, event }) => {
   return (
     <Button
       fullWidth
       size="small"
       variant="contained"
       sx={{ height: '40px', minWidth: 'auto' }}
+      onClick={event}
     >
       {buttonContent}
     </Button>
