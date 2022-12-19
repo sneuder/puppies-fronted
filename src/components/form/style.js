@@ -2,14 +2,19 @@ import colorPallete from '../../styles/colorPallete';
 
 const styleCard = {
   padding: 2,
+
   width: {
     xs: '100%',
     sm: '50%',
     md: '35%',
   },
 
+  minHeight: {
+    xs: '100vh',
+    sm: 'auto',
+  },
+
   height: {
-    xs: '100%',
     sm: 'auto',
   },
 

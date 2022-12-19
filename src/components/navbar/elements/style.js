@@ -17,12 +17,28 @@ const styleMenuMobile = {
 const styleButton = {
   background: colorPallete.gradients.purpleRed,
   width: '200px',
+  height: '40px',
   fontWeight: 'bold',
 };
 
 const styleInputs = {
-  background: '#fff',
-  borderRadius: '4px',
+  width: '100%',
 };
 
-export { ButtonLink, styleButton, styleInputs, styleMenuMobile };
+const styleSearchButton = {
+  width: '100%',
+  height: '40px',
+};
+
+const Form = styled.form`
+  width: 100%;
+`;
+
+export {
+  ButtonLink,
+  styleButton,
+  styleInputs,
+  styleMenuMobile,
+  styleSearchButton,
+  Form,
+};
