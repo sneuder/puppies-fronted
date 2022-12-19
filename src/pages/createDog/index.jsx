@@ -1,18 +1,20 @@
 import Form from '../../components/form/index';
 import Navigate from '../../components/navigate';
 
-import { Grid, Fab, Box, LinearProgress } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Grid, Box, LinearProgress } from '@mui/material';
 import { styleCreateDog } from './style';
 
 import useLoad from '../../hooks/useLoad';
+import useNavbar from '../../hooks/useNavbar';
 
 const CreateDog = () => {
   const { dogCreation } = useLoad();
+  const { toShowDesktop } = useNavbar();
+
   return (
     <Box sx={{ position: 'relative' }}>
       {dogCreation && <LinearProgress />}
-      <Navigate url={'/dogs'} />
+      {toShowDesktop && <Navigate url={'/dogs'} />}
       <Grid
         container
         justifyContent={'center'}
