@@ -12,44 +12,37 @@ import { styleBackground, ContainerOptions } from './style';
 
 const NavbarDesktop = ({ showOptions }) => {
   const { toShowDesktop, toShowMobile } = showOptions;
+
   return (
     <Grid
       container
-      justifyContent={'space-between'}
-      alignItems={'center'}
       p={2}
-      gap={2}
-      sx={styleBackground}
+      spacing={2}
     >
       <Grid
         container
         item
-        xs={10}
         md={4}
       >
         <SearchDogs />
       </Grid>
       <ContainerOptions
         toShow={toShowDesktop}
-        container
         item
-        gap={2}
-        md={7}
-        justifyContent={'end'}
-      >
-        <FilterTemp />
-        <FilterAlpha />
-        <CreateDog />
-      </ContainerOptions>
-      <ContainerOptions
-        toShow={toShowMobile}
         container
-        item
-        gap={2}
-        xs={1}
-        justifyContent={'end'}
+        md={8}
+        spacing={2}
+        justifyContent={'flex-end'}
       >
-        <MenuMobile />
+        <Grid item>
+          <FilterTemp />
+        </Grid>
+        <Grid item>
+          <FilterAlpha />
+        </Grid>
+        <Grid item>
+          <CreateDog />
+        </Grid>
       </ContainerOptions>
     </Grid>
   );

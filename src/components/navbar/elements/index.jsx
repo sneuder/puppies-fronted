@@ -1,8 +1,15 @@
 import useFilter from '../../../hooks/useFilter';
 import useSearch from '../../../hooks/useSearch';
-import MenuIcon from '@mui/icons-material/Menu';
-import { styleButton, ButtonLink, styleInputs, styleMenuMobile } from './style';
 
+import MenuIcon from '@mui/icons-material/Menu';
+import {
+  styleButton,
+  ButtonLink,
+  styleInputs,
+  styleMenuMobile,
+  styleSearchButton,
+  Form,
+} from './style';
 import {
   Select,
   MenuItem,
@@ -10,20 +17,44 @@ import {
   FormControl,
   Button,
   TextField,
+  Grid,
 } from '@mui/material';
 
 export const SearchDogs = () => {
   const { handleSearch, handleSubmit, register } = useSearch();
   return (
-    <form onSubmit={handleSubmit(handleSearch)}>
-      <TextField
-        {...register('search')}
-        fullWidth
-        placeholder="Search dog"
-        size="small"
-        sx={styleInputs}
-      />
-    </form>
+    <Form onSubmit={handleSubmit(handleSearch)}>
+      <Grid
+        container
+        item
+        xs={12}
+        spacing={1}
+      >
+        <Grid
+          item
+          xs={9}
+        >
+          <TextField
+            {...register('search')}
+            placeholder="Search dog"
+            size="small"
+            sx={styleInputs}
+          />
+        </Grid>
+        <Grid
+          item
+          xs={3}
+        >
+          <Button
+            variant="contained"
+            type="submit"
+            sx={styleSearchButton}
+          >
+            Search
+          </Button>
+        </Grid>
+      </Grid>
+    </Form>
   );
 };
 
