@@ -25,7 +25,7 @@ const NavbarDesktop = ({ showOptions }) => {
         container
         item
         xs={10}
-        md={5}
+        md={4}
       >
         <SearchDogs />
       </Grid>
@@ -34,7 +34,7 @@ const NavbarDesktop = ({ showOptions }) => {
         container
         item
         gap={2}
-        md={6}
+        md={7}
         justifyContent={'end'}
       >
         <FilterTemp />

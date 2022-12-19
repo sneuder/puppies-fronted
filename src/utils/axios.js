@@ -8,7 +8,8 @@ const reqAxios = async (method, endPoint, body, queries) => {
     method: method,
     url: `${URL}${endPoint}`,
     headers: { Authorization: `Bearer ${TOKEN}` },
-    body: body,
+    data: body,
+    params: queries,
   });
 
   return data;
