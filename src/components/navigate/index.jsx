@@ -1,9 +1,11 @@
+import { useNavigate } from 'react-router';
+
 import { Fab } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import usePage from '../../hooks/usePage';
 
 const Navigate = ({ url }) => {
-  const { handleNavigation } = usePage();
+  const nav = useNavigate();
+
   return (
     <Fab
       size={'medium'}
@@ -12,7 +14,7 @@ const Navigate = ({ url }) => {
         top: 16,
         left: 16,
       }}
-      onClick={() => handleNavigation(url)}
+      onClick={() => nav(url)}
     >
       <ArrowBackIcon />
     </Fab>
