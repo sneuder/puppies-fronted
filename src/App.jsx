@@ -1,16 +1,16 @@
-import { GlobalStyles } from "@mui/material";
-import styleGlobal from "./styles/globalStyles";
+import { GlobalStyles } from '@mui/material';
+import styleGlobal from './styles/globalStyles';
 
-import PublicRoutes from "./routes/public.routes";
+import PublicRoutes from './routes/public.routes';
 const inputGlobalStyles = <GlobalStyles styles={styleGlobal} />;
 
-function App() {
+const App = () => {
   return (
     <>
       {inputGlobalStyles}
       <PublicRoutes />
     </>
   );
-}
+};
 
 export default App;

@@ -1,10 +1,10 @@
-import background from "../../assets/img/background.jpg";
+import background from '../../assets/img/background.jpg';
 
 const styleHome = {
-  maxHeight: "100vh",
-  height: "100vh",
+  maxHeight: '100vh',
+  height: '100vh',
   backgroundImage: `url(${background})`,
-  backgroundSize: "cover",
+  backgroundSize: 'cover',
 };
 
 export { styleHome };
