@@ -11,7 +11,7 @@ import {
 import { styleBackground, ContainerOptions } from './style';
 
 const NavbarDesktop = ({ showOptions }) => {
-  const { toShowDesktop, toShowMobile } = showOptions;
+  const { toShowDesktop, toShowMobile, handleDialog } = showOptions;
 
   return (
     <Grid
@@ -19,6 +19,7 @@ const NavbarDesktop = ({ showOptions }) => {
       p={2}
       spacing={2}
     >
+      {toShowMobile && <MenuMobile event={handleDialog} />}
       <Grid
         container
         item

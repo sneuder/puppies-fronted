@@ -2,6 +2,7 @@ import useFilter from '../../../hooks/useFilter';
 import useSearch from '../../../hooks/useSearch';
 
 import MenuIcon from '@mui/icons-material/Menu';
+
 import {
   styleButton,
   ButtonLink,
@@ -18,6 +19,7 @@ import {
   Button,
   TextField,
   Grid,
+  Fab,
 } from '@mui/material';
 
 export const SearchDogs = () => {
@@ -122,6 +124,13 @@ export const CreateDog = () => {
   );
 };
 
-export const MenuMobile = () => {
-  return <MenuIcon sx={styleMenuMobile} />;
+export const MenuMobile = ({ event }) => {
+  return (
+    <Fab
+      sx={{ position: 'fixed', right: '16px', bottom: '16px' }}
+      onClick={event}
+    >
+      <MenuIcon sx={styleMenuMobile} />;
+    </Fab>
+  );
 };
