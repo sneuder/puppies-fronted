@@ -1,4 +1,5 @@
 import Form from '../../components/form/index';
+import Navigate from '../../components/navigate';
 
 import { Grid, Fab, Box, LinearProgress } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -11,16 +12,7 @@ const CreateDog = () => {
   return (
     <Box sx={{ position: 'relative' }}>
       {dogCreation && <LinearProgress />}
-      <Fab
-        size={'medium'}
-        sx={{
-          position: 'absolute',
-          top: 16,
-          left: 16,
-        }}
-      >
-        <ArrowBackIcon />
-      </Fab>
+      <Navigate url={'/dogs'} />
       <Grid
         container
         justifyContent={'center'}
