@@ -18,7 +18,7 @@ const usePuppies = () => {
 
   const handlePuppies = () => {
     const params = {
-      page: page || searchParams.get('page'),
+      page: page || searchParams.get('page') || 1,
       search: search,
     };
 
