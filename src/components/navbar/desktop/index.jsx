@@ -19,7 +19,7 @@ const NavbarDesktop = ({ showOptions }) => {
       p={2}
       spacing={2}
     >
-      {toShowMobile && <MenuMobile event={handleDialog} />}
+      {/* {toShowMobile && <MenuMobile event={handleDialog} />} */}
       <Grid
         container
         item
@@ -35,7 +35,7 @@ const NavbarDesktop = ({ showOptions }) => {
         spacing={2}
         justifyContent={'flex-end'}
       >
-        <Grid item>
+        {/* <Grid item>
           <FilterTemp />
         </Grid>
         <Grid item>
@@ -43,7 +43,7 @@ const NavbarDesktop = ({ showOptions }) => {
         </Grid>
         <Grid item>
           <CreateDog />
-        </Grid>
+        </Grid> */}
       </ContainerOptions>
     </Grid>
   );
