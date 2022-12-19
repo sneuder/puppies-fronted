@@ -1,3 +1,5 @@
+import colorPallete from '../../styles/colorPallete';
+
 const styleCard = {
   padding: 2,
   width: {
@@ -17,4 +19,9 @@ const styleCard = {
   },
 };
 
-export { styleCard };
+const styleValidations = {
+  color: colorPallete.error,
+  fontSize: '12px',
+};
+
+export { styleCard, styleValidations };

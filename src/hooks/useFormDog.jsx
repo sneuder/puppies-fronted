@@ -59,8 +59,9 @@ const useFormDog = () => {
       validation[toCheck] = 'Numbers and symbols not allowed';
     });
 
+    if (Object.keys(validation).length !== 0)
+      return setValidations({ ...validation });
     setValidations({ ...{} });
-    if (validation == {}) return setValidations({ ...validation });
 
     dispatch(createdDog(true));
     reqAxios('post', '/dogs/newDog', dogFormData, '').then((data) => {

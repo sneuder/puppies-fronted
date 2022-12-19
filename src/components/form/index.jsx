@@ -8,7 +8,7 @@ import {
   SelectForm,
   SelectedElements,
 } from '../../shared/inputs';
-import { styleCard } from './style';
+import { styleCard, styleValidations } from './style';
 
 import {
   GeneralContainer,
@@ -46,7 +46,12 @@ const Form = () => {
           </SubContainerFull>
           {validations.name && (
             <SubContainerFull>
-              <Typography variant="body2">{validations.name}</Typography>
+              <Typography
+                variant="body2"
+                sx={styleValidations}
+              >
+                {validations.name}
+              </Typography>
             </SubContainerFull>
           )}
         </GeneralContainer>
@@ -61,7 +66,12 @@ const Form = () => {
           </SubContainerFull>
           {validations.bredFor && (
             <SubContainerFull>
-              <Typography variant="body2">{validations.bredFor}</Typography>
+              <Typography
+                variant="body2"
+                sx={styleValidations}
+              >
+                {validations.bredFor}
+              </Typography>
             </SubContainerFull>
           )}
         </GeneralContainer>
@@ -90,7 +100,12 @@ const Form = () => {
           </GeneralContainer>
           {validations.lifeSpan && (
             <SubContainerFull>
-              <Typography variant="body2">{validations.lifeSpan}</Typography>
+              <Typography
+                variant="body2"
+                sx={styleValidations}
+              >
+                {validations.lifeSpan}
+              </Typography>
             </SubContainerFull>
           )}
         </GeneralContainer>
@@ -133,7 +148,12 @@ const Form = () => {
           </GeneralContainer>
           {validations.weight && (
             <SubContainerFull>
-              <Typography variant="body2">{validations.weight}</Typography>
+              <Typography
+                variant="body2"
+                sx={styleValidations}
+              >
+                {validations.weight}
+              </Typography>
             </SubContainerFull>
           )}
         </GeneralContainer>
