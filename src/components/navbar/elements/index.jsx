@@ -129,8 +129,9 @@ export const MenuMobile = ({ event }) => {
     <Fab
       sx={{ position: 'fixed', right: '16px', bottom: '16px' }}
       onClick={event}
+      color={'primary'}
     >
-      <MenuIcon sx={styleMenuMobile} />;
+      <MenuIcon sx={styleMenuMobile} />
     </Fab>
   );
 };
