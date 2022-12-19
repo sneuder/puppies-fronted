@@ -37,8 +37,15 @@ const deleteAttributes = (state, action) => {
 
 const updateProperties = (state, action) => {
   const { keyForm, subKeyForm, valueForm } = action.payload;
-  if (subKeyForm) state.formDog[keyForm][subKeyForm] = valueForm;
+  if (subKeyForm) {
+    state.formDog[keyForm][subKeyForm] = Number(valueForm);
+  }
   if (!subKeyForm) state.formDog[keyForm] = valueForm;
+};
+
+const createdDog = (state, action) => {
+  console.log(action.payload);
+  state.createdDog = action.payload;
 };
 
 export default {
@@ -48,4 +55,5 @@ export default {
   updateAttributes,
   deleteAttributes,
   updateProperties,
+  createdDog,
 };

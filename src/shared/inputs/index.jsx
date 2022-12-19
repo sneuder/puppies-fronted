@@ -1,4 +1,5 @@
 import { Button, TextField, Select, MenuItem, Chip, Grid } from '@mui/material';
+import { styleButtonSubmit, styleButton } from './style';
 
 export const InputForm = ({ labelProp, event, attr, subAttr }) => {
   return (
@@ -59,10 +60,24 @@ export const ButtonForm = ({ buttonContent, event }) => {
       fullWidth
       size="small"
       variant="contained"
-      sx={{ height: '40px', minWidth: 'auto' }}
+      sx={styleButton}
       onClick={event}
     >
       {buttonContent}
+    </Button>
+  );
+};
+
+export const ButtonSubmit = ({ event }) => {
+  return (
+    <Button
+      fullWidth
+      size="small"
+      variant="contained"
+      sx={styleButtonSubmit}
+      onClick={event}
+    >
+      New Puppy
     </Button>
   );
 };

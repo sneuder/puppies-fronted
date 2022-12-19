@@ -4,6 +4,7 @@ import {
   updateAttributes,
   deleteAttributes,
   updateProperties,
+  createdDog,
 } from '../redux/dogs/dogsSlice';
 
 import reqAxios from '../utils/axios';
@@ -23,7 +24,7 @@ const useFormDog = () => {
     const validation = {};
 
     const regexString = /^[a-zA-Z\s]+$/;
-    const regexNum = /\d/g;
+    const regexNum = /^\d+$/;
 
     const propToCheck = ['name', 'bredFor', 'breed_group'];
     const measureToCheck = ['lifeSpan', 'weight'];
@@ -38,15 +39,15 @@ const useFormDog = () => {
     });
 
     measureToCheck.forEach((toCheck) => {
-      if (
-        regexNum.test(dogFormData[toCheck].to) &&
-        regexNum.test(dogFormData[toCheck].from)
-      ) {
-        if (dogFormData[toCheck].from <= dogFormData[toCheck].to) return;
+      const from = dogFormData[toCheck].from;
+      const to = dogFormData[toCheck].to;
+
+      if (regexNum.test(from) && regexNum.test(to)) {
+        if (from <= to) return;
         return (validation[toCheck] = 'From is higher than To');
       }
 
-      if (dogFormData[toCheck].to === '' || dogFormData[toCheck].from === '')
+      if (from === '' || to === '')
         return (validation[toCheck] = 'Complete this field');
 
       validation[toCheck] = 'Symbols and characters not allowed';
@@ -59,10 +60,12 @@ const useFormDog = () => {
     });
 
     setValidations({ ...{} });
-    if (validation)
-      return setValidations((prevState) => ({ ...prevState, ...validation }));
+    if (validation == {}) return setValidations({ ...validation });
 
-    reqAxios('post', '/dogs/newDog', dogFormData, '').then((data) => {});
+    dispatch(createdDog(true));
+    reqAxios('post', '/dogs/newDog', dogFormData, '').then((data) => {
+      dispatch(createdDog(false));
+    });
   };
 
   const getAttr = (attr, url) => {

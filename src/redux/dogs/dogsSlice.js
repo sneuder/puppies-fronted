@@ -22,6 +22,7 @@ const dogsSlice = createSlice({
         to: '',
       },
     },
+    createdDog: false,
   },
   reducers: reducers,
 });
@@ -33,6 +34,7 @@ export const {
   updateAttributes,
   deleteAttributes,
   updateProperties,
+  createdDog,
 } = dogsSlice.actions;
 
 export default dogsSlice.reducer;

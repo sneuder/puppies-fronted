@@ -1,7 +1,8 @@
-import { Card, Typography, Alert } from '@mui/material';
+import { Card, Typography } from '@mui/material';
 
 import {
   ButtonForm,
+  ButtonSubmit,
   InputForm,
   InputFormNumber,
   SelectForm,
@@ -180,10 +181,7 @@ const Form = () => {
         </GeneralContainer>
 
         <SubContainerFull>
-          <ButtonForm
-            buttonContent={'New Puppy'}
-            event={handleDog}
-          />
+          <ButtonSubmit event={handleDog} />
         </SubContainerFull>
       </GeneralContainer>
     </Card>
