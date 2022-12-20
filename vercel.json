@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/dogs",
-      "destination:": "/dogs"
+      "src": "/[^.]+",
+      "dest": "/"
     }
   ]
 }
