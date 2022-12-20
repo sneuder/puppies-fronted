@@ -23,7 +23,7 @@ import {
 } from '@mui/material';
 
 export const SearchDogs = () => {
-  const { handleSearch, handleSubmit, register } = useSearch();
+  const { handleSearch, handleSubmit, register, defaultSearch } = useSearch();
   return (
     <Form onSubmit={handleSubmit(handleSearch)}>
       <Grid
@@ -41,6 +41,7 @@ export const SearchDogs = () => {
             placeholder="Search dog"
             size="small"
             sx={styleInputs}
+            defaultValue={defaultSearch}
           />
         </Grid>
         <Grid

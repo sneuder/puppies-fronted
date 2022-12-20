@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/dogs",
+      "destination:": "/dogs"
+    }
+  ]
+}

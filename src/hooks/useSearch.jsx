@@ -9,6 +9,7 @@ import { updateQueries } from '../redux/queries/queriesSlices';
 
 const useSearch = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const defaultSearch = searchParams.get('search') || '';
   const { register, handleSubmit } = useForm();
 
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const useSearch = () => {
   };
 
   return {
+    defaultSearch,
     handleSubmit,
     handleSearch,
     register,
