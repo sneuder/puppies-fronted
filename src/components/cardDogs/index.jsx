@@ -24,7 +24,7 @@ const CardDogs = ({ dogs }) => {
       sx={{ padding: '16px', width: '100%' }}
     >
       {dogs.map((dog) => (
-        <ImageListItem>
+        <ImageListItem key={dog.id}>
           {dog != '' ? <Dogs dog={dog} /> : <DogsLoading />}
         </ImageListItem>
       ))}
@@ -53,7 +53,10 @@ function Dogs({ dog }) {
             gap={1.5}
           >
             {temps.map(({ temperament }) => (
-              <Chip label={temperament} />
+              <Chip
+                label={temperament}
+                key={temperament.id}
+              />
             ))}
           </Grid>
         </Grid>
