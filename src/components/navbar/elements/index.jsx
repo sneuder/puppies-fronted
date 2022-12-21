@@ -90,13 +90,14 @@ export const FilterTemp = () => {
   );
 };
 
-export const FilterAlpha = () => {
+export const FilterAlpha = ({ handleOrder }) => {
   return (
     <FormControl>
       <Select
         size="small"
         sx={styleInputs}
         defaultValue={'selected'}
+        onChange={handleOrder}
       >
         <MenuItem
           value={'selected'}

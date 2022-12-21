@@ -10,7 +10,7 @@ import {
 
 import { styleBackground, ContainerOptions } from './style';
 
-const NavbarDesktop = ({ showOptions }) => {
+const NavbarDesktop = ({ showOptions, handleOrder }) => {
   const { toShowDesktop, toShowMobile, handleDialog } = showOptions;
 
   return (
@@ -35,13 +35,13 @@ const NavbarDesktop = ({ showOptions }) => {
         spacing={2}
         justifyContent={'flex-end'}
       >
-        {/* <Grid item>
+        <Grid item>
           <FilterTemp />
         </Grid>
         <Grid item>
-          <FilterAlpha />
+          <FilterAlpha handleOrder={handleOrder} />
         </Grid>
-        <Grid item>
+        {/* <Grid item>
           <CreateDog />
         </Grid> */}
       </ContainerOptions>
