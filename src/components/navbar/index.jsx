@@ -6,14 +6,9 @@ import Mobile from './mobile';
 
 const Navbar = () => {
   const showOptions = useNavbar();
-  const { handleOrder } = useFilter();
-
   return (
     <>
-      <NavbarDesktop
-        showOptions={showOptions}
-        handleOrder={handleOrder}
-      />
+      <NavbarDesktop showOptions={showOptions} />
       <Mobile
         handleDialog={showOptions.handleDialog}
         openDialog={showOptions.openDialog}
