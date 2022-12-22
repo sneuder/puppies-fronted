@@ -13,7 +13,8 @@ const usePuppies = () => {
   });
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const { page, search, order } = useSelector((state) => state.queries);
+  const { page, search, order, filter } = useSelector((state) => state.queries);
+
   const dispatch = useDispatch();
 
   const handlePuppies = () => {
@@ -21,6 +22,7 @@ const usePuppies = () => {
       page: page || searchParams.get('page') || 1,
       search: search,
       order: order,
+      filter: filter,
     };
 
     dispatch(pagDogs());
@@ -32,7 +34,7 @@ const usePuppies = () => {
 
   useEffect(() => {
     handlePuppies();
-  }, [search, page, order]);
+  }, [search, page, order, filter]);
 
   return {
     dogs,

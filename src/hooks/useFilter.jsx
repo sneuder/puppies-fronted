@@ -27,6 +27,17 @@ const useFilter = () => {
     );
   };
 
+  const handleFilter = (e) => {
+    const value = e.target.value.toLowerCase();
+
+    dispatch(
+      updateQuery({
+        keyQuery: 'filter',
+        valueQuery: value,
+      })
+    );
+  };
+
   useEffect(() => {
     handleTemps();
   }, []);
@@ -34,6 +45,7 @@ const useFilter = () => {
   return {
     temps,
     handleOrder,
+    handleFilter,
   };
 };
 

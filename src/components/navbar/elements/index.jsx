@@ -62,7 +62,7 @@ export const SearchDogs = () => {
 };
 
 export const FilterTemp = () => {
-  const { temps } = useFilter();
+  const { temps, handleFilter } = useFilter();
 
   return (
     <FormControl>
@@ -70,6 +70,7 @@ export const FilterTemp = () => {
         size="small"
         sx={styleInputs}
         defaultValue={'selected'}
+        onChange={handleFilter}
       >
         <MenuItem
           value={'selected'}
