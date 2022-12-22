@@ -18,7 +18,7 @@ const Mobile = ({ openDialog, handleDialog }) => {
         >
           <FilterTemp />
           <FilterAlpha />
-          <CreateDog />
+          {/* <CreateDog /> */}
         </Grid>
       </Card>
     </Dialog>

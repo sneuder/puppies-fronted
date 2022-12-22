@@ -5,7 +5,7 @@ import { Grid } from '@mui/material';
 const styleBackground = {};
 
 const ContainerOptions = styled(Grid)`
-  display: ${({ toShow }) => (toShow ? 'flex' : 'none')};
+  display: ${({ toshow }) => (toshow == 'true' ? 'flex' : 'none')};
 `;
 
 export { styleBackground, ContainerOptions };

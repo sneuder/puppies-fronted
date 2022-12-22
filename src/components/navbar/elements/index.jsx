@@ -1,3 +1,4 @@
+import useTemps from '../../../hooks/useTemps';
 import useFilter from '../../../hooks/useFilter';
 import useSearch from '../../../hooks/useSearch';
 
@@ -62,7 +63,8 @@ export const SearchDogs = () => {
 };
 
 export const FilterTemp = () => {
-  const { temps } = useFilter();
+  const { temps, selectedTemp } = useTemps();
+  const { handleFilter } = useFilter();
 
   return (
     <FormControl>
@@ -70,6 +72,7 @@ export const FilterTemp = () => {
         size="small"
         sx={styleInputs}
         defaultValue={'selected'}
+        onChange={handleFilter}
       >
         <MenuItem
           value={'selected'}
@@ -80,7 +83,7 @@ export const FilterTemp = () => {
         {temps.map(({ temperament, id }) => (
           <MenuItem
             key={id}
-            value={temperament}
+            value={temperament.toLowerCase()}
           >
             {temperament}
           </MenuItem>
@@ -91,12 +94,15 @@ export const FilterTemp = () => {
 };
 
 export const FilterAlpha = () => {
+  const { handleOrder, selectedOrder } = useFilter();
+
   return (
     <FormControl>
       <Select
         size="small"
         sx={styleInputs}
         defaultValue={'selected'}
+        onChange={handleOrder}
       >
         <MenuItem
           value={'selected'}
