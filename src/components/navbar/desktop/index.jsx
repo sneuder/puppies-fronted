@@ -19,7 +19,7 @@ const NavbarDesktop = ({ showOptions, handleOrder }) => {
       p={2}
       spacing={2}
     >
-      {/* {toShowMobile && <MenuMobile event={handleDialog} />} */}
+      {toShowMobile && <MenuMobile event={handleDialog} />}
       <Grid
         container
         item
