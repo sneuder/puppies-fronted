@@ -1,21 +1,38 @@
-import reqAxios from '../utils/axios';
-import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateQuery } from '../redux/queries/queriesSlices';
 
 const useFilter = () => {
-  const [temps, setTemps] = useState([]);
+  const dispatch = useDispatch();
+  const selectedOrder = useSelector((state) => state.queries.order);
 
-  const handleTemps = () => {
-    reqAxios('get', '/temps/allTemps').then((data) => {
-      setTemps([...data]);
-    });
+  const handleOrder = (e) => {
+    let value = e.target.value;
+    if (value === 'A-Z') value = 'asc';
+    if (value === 'Z-A') value = 'desc';
+
+    dispatch(
+      updateQuery({
+        keyQuery: 'order',
+        valueQuery: value,
+      })
+    );
   };
 
-  useEffect(() => {
-    handleTemps();
-  }, []);
+  const handleFilter = (e) => {
+    const value = e.target.value.toLowerCase();
+
+    dispatch(
+      updateQuery({
+        keyQuery: 'filter',
+        valueQuery: value,
+      })
+    );
+  };
 
   return {
-    temps,
+    handleOrder,
+    selectedOrder,
+    handleFilter,
   };
 };
 
