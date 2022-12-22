@@ -71,7 +71,7 @@ export const FilterTemp = () => {
       <Select
         size="small"
         sx={styleInputs}
-        defaultValue={selectedTemp || 'selected'}
+        defaultValue={'selected'}
         onChange={handleFilter}
       >
         <MenuItem

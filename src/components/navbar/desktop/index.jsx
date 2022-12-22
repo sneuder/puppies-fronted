@@ -28,7 +28,7 @@ const NavbarDesktop = ({ showOptions, handleOrder }) => {
         <SearchDogs />
       </Grid>
       <ContainerOptions
-        toShow={toShowDesktop}
+        toshow={`${toShowDesktop}`}
         item
         container
         md={8}
