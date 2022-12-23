@@ -4,7 +4,7 @@ import reqAxios from '../../../src/utils/axios';
 describe('HTTP request axios for breeds', () => {
   it('should get all breeds', async () => {
     const data = await reqAxios('get', '/breeds/allBreeds');
-    expect(data.length).not.toBe(0);
+    expect(data).not.toHaveLength(0);
     expect(data.length).not.toBe(undefined);
   });
 

@@ -4,7 +4,7 @@ import reqAxios from '../../../src/utils/axios';
 describe('HTTP request axios for temps', () => {
   it('should get all temps', async () => {
     const data = await reqAxios('get', '/temps/allTemps');
-    expect(data.length).not.toBe(0);
+    expect(data).not.toHaveLength(0);
     expect(data.length).not.toBe(undefined);
   });
 
