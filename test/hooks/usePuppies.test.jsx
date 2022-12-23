@@ -10,6 +10,8 @@ import store from '../../src/redux/store';
 import { MemoryRouter } from 'react-router-dom';
 
 describe('usePuppies custome hook', () => {
+  let dogs;
+
   it('should have 10 dogs by default', async () => {
     const { waitForNextUpdate, result } = renderHook(() => usePuppies(), {
       wrapper: ({ children }) => (
@@ -20,6 +22,13 @@ describe('usePuppies custome hook', () => {
     });
 
     await waitForNextUpdate();
-    expect(result.current.dogs.length).toBe(10);
+    dogs = result.current.dogs;
+    expect(dogs.length).toBe(10);
+  });
+
+  it('should have enough properties', () => {
+    expect(dogs[0]).toHaveProperty('name');
+    expect(dogs[0]).toHaveProperty('lifespan');
+    expect(dogs[0]).toHaveProperty('temps');
   });
 });
