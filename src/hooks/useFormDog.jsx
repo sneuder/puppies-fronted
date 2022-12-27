@@ -16,8 +16,8 @@ const useFormDog = () => {
   const dispatch = useDispatch();
   const dogFormData = useSelector((state) => state.dogs.formDog);
   const selectedAttrs = useSelector((state) => {
-    const { temperament, breed_group, countries } = state.dogs.formDog;
-    return { temperament, breed_group, countries };
+    const { temps, breeds, countries } = state.dogs.formDog.attributes;
+    return { temps, breeds, countries };
   });
 
   const handleDog = () => {
@@ -26,9 +26,9 @@ const useFormDog = () => {
     const regexString = /^[a-zA-Z\s]+$/;
     const regexNum = /^\d+$/;
 
-    const propToCheck = ['name', 'bredFor', 'breed_group'];
+    const propToCheck = ['name', 'bred_for', 'breeds'];
     const measureToCheck = ['lifeSpan', 'weight'];
-    const attrToCheck = ['countries', 'temperament'];
+    const attrToCheck = ['countries', 'temps'];
 
     propToCheck.forEach((toCheck) => {
       if (regexString.test(dogFormData[toCheck])) return;
@@ -54,8 +54,11 @@ const useFormDog = () => {
     });
 
     attrToCheck.forEach((toCheck) => {
-      if (dogFormData[toCheck].length === 0) return;
-      if (dogFormData[toCheck].some((item) => regexString.test(item))) return;
+      if (dogFormData.attributes[toCheck].length === 0) return;
+      if (
+        dogFormData.attributes[toCheck].some((item) => regexString.test(item))
+      )
+        return;
       validation[toCheck] = 'Numbers and symbols not allowed';
     });
 
@@ -119,7 +122,7 @@ const useFormDog = () => {
   };
 
   useEffect(() => {
-    getAttr('temperaments', '/temps/allTemps');
+    getAttr('temps', '/temps/allTemps');
     getAttr('breeds', '/breeds/allBreeds');
     getAttr('countries', '/countries/allCountries');
   }, []);

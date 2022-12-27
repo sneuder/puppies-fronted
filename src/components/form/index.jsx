@@ -78,7 +78,7 @@ const Form = () => {
             <InputForm
               labelProp={'Bred for'}
               event={setProperties}
-              attr={'bredFor'}
+              attr={'bred_for'}
             />
           }
           error={
@@ -125,7 +125,7 @@ const Form = () => {
               defaultItem={'Select Breed Group'}
               items={attributes.breeds}
               event={setProperties}
-              attr={'breed_group'}
+              attr={'breeds'}
             />
           }
           button={<ButtonForm buttonContent={'+'} />}
@@ -163,9 +163,9 @@ const Form = () => {
           select={
             <SelectForm
               defaultItem={'Select the temperaments'}
-              items={attributes.temperaments}
+              items={attributes.temps}
               event={setAttr}
-              attr={'temperament'}
+              attr={'temps'}
             />
           }
           button={
@@ -176,9 +176,9 @@ const Form = () => {
           }
           elements={
             <SelectedElements
-              elements={selectedAttrs.temperament}
+              elements={selectedAttrs.temps}
               deletelement={deleteAttr}
-              attr={'temperament'}
+              attr={'temps'}
             />
           }
         />

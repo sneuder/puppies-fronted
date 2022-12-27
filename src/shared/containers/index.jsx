@@ -33,7 +33,8 @@ export const ContainerDoubleInput = ({ title, input1, input2, error }) => {
       <Grid
         container
         item
-        spacing={2}
+        rowSpacing={0.2}
+        columnSpacing={2}
       >
         <Grid
           item
@@ -47,6 +48,7 @@ export const ContainerDoubleInput = ({ title, input1, input2, error }) => {
         >
           {input2}
         </Grid>
+        <Grid item>{error}</Grid>
       </Grid>
     </Grid>
   );
@@ -80,7 +82,8 @@ export const ContainerSelectMulti = ({ select, button, elements }) => {
     <Grid
       container
       item
-      spacing={2}
+      columnSpacing={2}
+      rowSpacing={1}
     >
       <Grid
         item
