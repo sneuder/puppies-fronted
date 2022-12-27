@@ -8,6 +8,7 @@ import {
 } from '../redux/dogs/dogsSlice';
 
 import reqAxios from '../utils/axios';
+import validateForm from '../utils/validations';
 
 const useFormDog = () => {
   const [attributes, setAttributes] = useState({});
@@ -22,45 +23,9 @@ const useFormDog = () => {
 
   const handleDog = () => {
     const validation = {};
+    validateForm(validation, dogFormData);
 
-    const regexString = /^[a-zA-Z\s]+$/;
-    const regexNum = /^\d+$/;
-
-    const propToCheck = ['name', 'bred_for', 'breeds'];
-    const measureToCheck = ['lifeSpan', 'weight'];
-    const attrToCheck = ['countries', 'temps'];
-
-    propToCheck.forEach((toCheck) => {
-      if (regexString.test(dogFormData[toCheck])) return;
-      if (dogFormData[toCheck] === '') {
-        return (validation[toCheck] = 'Complete this field');
-      }
-      validation[toCheck] = 'Numbers and symbols not allowed';
-    });
-
-    measureToCheck.forEach((toCheck) => {
-      const from = dogFormData[toCheck].from;
-      const to = dogFormData[toCheck].to;
-
-      if (regexNum.test(from) && regexNum.test(to)) {
-        if (from <= to) return;
-        return (validation[toCheck] = 'From is higher than To');
-      }
-
-      if (from === '' || to === '')
-        return (validation[toCheck] = 'Complete this field');
-
-      validation[toCheck] = 'Symbols and characters not allowed';
-    });
-
-    attrToCheck.forEach((toCheck) => {
-      if (dogFormData.attributes[toCheck].length === 0) return;
-      if (
-        dogFormData.attributes[toCheck].some((item) => regexString.test(item))
-      )
-        return;
-      validation[toCheck] = 'Numbers and symbols not allowed';
-    });
+    console.log(validation);
 
     if (Object.keys(validation).length !== 0)
       return setValidations({ ...validation });
@@ -92,10 +57,10 @@ const useFormDog = () => {
     }
   };
 
-  const deleteAttr = (temp, attr) => {
+  const deleteAttr = (attrToRemove, attr) => {
     dispatch(
       deleteAttributes({
-        tempToRemove: temp,
+        attrToRemove: attrToRemove,
         attribute: attr,
       })
     );
