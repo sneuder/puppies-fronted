@@ -1,5 +1,7 @@
 import { Card, Typography } from '@mui/material';
 
+import { styleCard, styleValidations } from './style';
+
 import {
   ButtonForm,
   ButtonSubmit,
@@ -8,7 +10,6 @@ import {
   SelectForm,
   SelectedElements,
 } from '../../shared/inputs';
-import { styleCard, styleValidations } from './style';
 
 import {
   GeneralContainer,
@@ -16,7 +17,10 @@ import {
   SubContainerMulti,
 } from '../../shared/containers';
 
+import DialogsAttrs from '../../shared/components/dialogsAttrs';
+
 import useFormDog from '../../hooks/useFormDog';
+import useDialog from '../../hooks/useDialog';
 
 const Form = () => {
   const {
@@ -26,11 +30,19 @@ const Form = () => {
     setAttr,
     deleteAttr,
     setProperties,
+    postAttrs,
     handleDog,
   } = useFormDog();
 
+  const dialogTools = useDialog();
+
   return (
     <Card sx={styleCard}>
+      <DialogsAttrs
+        dialogtools={dialogTools}
+        postattrs={postAttrs}
+      />
+
       <GeneralContainer>
         <SubContainerFull>
           <Typography variant="h5">Create your Puppy</Typography>
@@ -168,7 +180,10 @@ const Form = () => {
             />
           </SubContainerMulti>
           <SubContainerMulti space={2}>
-            <ButtonForm buttonContent={'+'} />
+            <ButtonForm
+              buttonContent={'+'}
+              event={() => dialogTools.handleAttrsState('temp')}
+            />
           </SubContainerMulti>
           <SubContainerFull>
             <SelectedElements

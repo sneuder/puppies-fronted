@@ -108,6 +108,16 @@ const useFormDog = () => {
     );
   };
 
+  const postAttrs = (data, attrName) => {
+    const attrEndpoints = {
+      temp: '/temps/newTemp',
+      breed: '/breeds/newBreed',
+      country: '/countries/newCountry',
+    };
+
+    reqAxios('post', attrEndpoints[attrName], data);
+  };
+
   useEffect(() => {
     getAttr('temperaments', '/temps/allTemps');
     getAttr('breeds', '/breeds/allBreeds');
@@ -121,6 +131,7 @@ const useFormDog = () => {
     setAttr,
     deleteAttr,
     setProperties,
+    postAttrs,
     handleDog,
   };
 };
