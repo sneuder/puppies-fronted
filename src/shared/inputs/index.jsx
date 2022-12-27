@@ -45,9 +45,9 @@ export const SelectForm = ({ defaultItem, items, event, attr }) => {
         <MenuItem
           key={item.id}
           id={item.id}
-          value={item[attr]}
+          value={item.name}
         >
-          {item[attr]}
+          {item.name}
         </MenuItem>
       ))}
     </Select>

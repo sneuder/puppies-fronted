@@ -8,6 +8,8 @@ import {
 } from '../redux/dogs/dogsSlice';
 
 import reqAxios from '../utils/axios';
+import validateForm from '../utils/validations';
+import Dog from '../models/Dog';
 
 const useFormDog = () => {
   const [attributes, setAttributes] = useState({});
@@ -16,55 +18,20 @@ const useFormDog = () => {
   const dispatch = useDispatch();
   const dogFormData = useSelector((state) => state.dogs.formDog);
   const selectedAttrs = useSelector((state) => {
-    const { temperament, breed_group, countries } = state.dogs.formDog;
-    return { temperament, breed_group, countries };
+    const { temps, breeds, countries } = state.dogs.formDog.attributes;
+    return { temps, breeds, countries };
   });
 
   const handleDog = () => {
     const validation = {};
-
-    const regexString = /^[a-zA-Z\s]+$/;
-    const regexNum = /^\d+$/;
-
-    const propToCheck = ['name', 'bredFor', 'breed_group'];
-    const measureToCheck = ['lifeSpan', 'weight'];
-    const attrToCheck = ['countries', 'temperament'];
-
-    propToCheck.forEach((toCheck) => {
-      if (regexString.test(dogFormData[toCheck])) return;
-      if (dogFormData[toCheck] === '') {
-        return (validation[toCheck] = 'Complete this field');
-      }
-      validation[toCheck] = 'Numbers and symbols not allowed';
-    });
-
-    measureToCheck.forEach((toCheck) => {
-      const from = dogFormData[toCheck].from;
-      const to = dogFormData[toCheck].to;
-
-      if (regexNum.test(from) && regexNum.test(to)) {
-        if (from <= to) return;
-        return (validation[toCheck] = 'From is higher than To');
-      }
-
-      if (from === '' || to === '')
-        return (validation[toCheck] = 'Complete this field');
-
-      validation[toCheck] = 'Symbols and characters not allowed';
-    });
-
-    attrToCheck.forEach((toCheck) => {
-      if (dogFormData[toCheck].length === 0) return;
-      if (dogFormData[toCheck].some((item) => regexString.test(item))) return;
-      validation[toCheck] = 'Numbers and symbols not allowed';
-    });
+    validateForm(validation, dogFormData);
 
     if (Object.keys(validation).length !== 0)
       return setValidations({ ...validation });
     setValidations({ ...{} });
 
     dispatch(createdDog(true));
-    reqAxios('post', '/dogs/newDog', dogFormData, '').then((data) => {
+    reqAxios('post', '/dogs/newDog', new Dog(dogFormData), '').then((data) => {
       dispatch(createdDog(false));
     });
   };
@@ -89,10 +56,10 @@ const useFormDog = () => {
     }
   };
 
-  const deleteAttr = (temp, attr) => {
+  const deleteAttr = (attrToRemove, attr) => {
     dispatch(
       deleteAttributes({
-        tempToRemove: temp,
+        attrToRemove: attrToRemove,
         attribute: attr,
       })
     );
@@ -108,8 +75,18 @@ const useFormDog = () => {
     );
   };
 
+  const postAttrs = (data, attrName) => {
+    const attrEndpoints = {
+      temp: '/temps/newTemp',
+      breed: '/breeds/newBreed',
+      country: '/countries/newCountry',
+    };
+
+    reqAxios('post', attrEndpoints[attrName], data);
+  };
+
   useEffect(() => {
-    getAttr('temperaments', '/temps/allTemps');
+    getAttr('temps', '/temps/allTemps');
     getAttr('breeds', '/breeds/allBreeds');
     getAttr('countries', '/countries/allCountries');
   }, []);
@@ -121,6 +98,7 @@ const useFormDog = () => {
     setAttr,
     deleteAttr,
     setProperties,
+    postAttrs,
     handleDog,
   };
 };
