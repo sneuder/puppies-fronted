@@ -1,38 +1,105 @@
 import { Grid } from '@mui/material';
 
-export const GeneralContainer = ({ children, gapProp }) => {
+export const ContainerFull = ({ input, error }) => {
   return (
     <Grid
       item
       container
-      rowSpacing={gapProp || 2}
-      columnSpacing={2}
+      alignItems={'stretch'}
     >
-      {children}
+      <Grid
+        item
+        xs={12}
+      >
+        {input}
+      </Grid>
+      <Grid
+        item
+        xs={12}
+      >
+        {error}
+      </Grid>
     </Grid>
   );
 };
 
-export const SubContainerFull = ({ children }) => {
+export const ContainerDoubleInput = ({ title, input1, input2, error }) => {
   return (
     <Grid
       item
-      alignItems={'stretch'}
-      xs={12}
+      container
     >
-      {children}
+      <Grid item>{title}</Grid>
+      <Grid
+        container
+        item
+        spacing={2}
+      >
+        <Grid
+          item
+          xs={6}
+        >
+          {input1}
+        </Grid>
+        <Grid
+          item
+          xs={6}
+        >
+          {input2}
+        </Grid>
+      </Grid>
     </Grid>
   );
 };
 
-export const SubContainerMulti = ({ children, space }) => {
+export const ContainerSelectForm = ({ select, button }) => {
   return (
     <Grid
       item
-      alignItems={'stretch'}
-      xs={space}
+      container
+      spacing={2}
     >
-      {children}
+      <Grid
+        item
+        xs={10}
+      >
+        {select}
+      </Grid>
+      <Grid
+        item
+        xs={2}
+      >
+        {button}
+      </Grid>
+    </Grid>
+  );
+};
+
+export const ContainerSelectMulti = ({ select, button, elements }) => {
+  return (
+    <Grid
+      container
+      item
+      spacing={2}
+    >
+      <Grid
+        item
+        xs={10}
+      >
+        {select}
+      </Grid>
+      <Grid
+        item
+        xs={2}
+      >
+        {button}
+      </Grid>
+      <Grid
+        item
+        xs={12}
+      >
+        {elements}
+      </Grid>
     </Grid>
   );
 };

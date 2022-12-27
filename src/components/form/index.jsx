@@ -1,4 +1,4 @@
-import { Card, Typography } from '@mui/material';
+import { Card, Typography, Grid } from '@mui/material';
 
 import { styleCard, styleValidations } from './style';
 
@@ -12,9 +12,10 @@ import {
 } from '../../shared/inputs';
 
 import {
-  GeneralContainer,
-  SubContainerFull,
-  SubContainerMulti,
+  ContainerFull,
+  ContainerDoubleInput,
+  ContainerSelectForm,
+  ContainerSelectMulti,
 } from '../../shared/containers';
 
 import DialogsAttrs from '../../shared/components/dialogsAttrs';
@@ -38,187 +39,176 @@ const Form = () => {
 
   return (
     <Card sx={styleCard}>
-      <DialogsAttrs
-        dialogtools={dialogTools}
-        postattrs={postAttrs}
-      />
+      <Grid
+        container
+        spacing={2}
+      >
+        <DialogsAttrs
+          dialogtools={dialogTools}
+          postattrs={postAttrs}
+        />
 
-      <GeneralContainer>
-        <SubContainerFull>
+        <Grid
+          item
+          container
+        >
           <Typography variant="h5">Create your Puppy</Typography>
-        </SubContainerFull>
+        </Grid>
 
-        <GeneralContainer gapProp={1}>
-          <SubContainerFull>
+        <ContainerFull
+          input={
             <InputForm
               labelProp={'Dog name'}
               event={setProperties}
               attr={'name'}
             />
-          </SubContainerFull>
-          {validations.name && (
-            <SubContainerFull>
-              <Typography
-                variant="body2"
-                sx={styleValidations}
-              >
-                {validations.name}
-              </Typography>
-            </SubContainerFull>
-          )}
-        </GeneralContainer>
+          }
+          error={
+            <Typography
+              variant="body2"
+              sx={styleValidations}
+            >
+              {validations.name}
+            </Typography>
+          }
+        />
 
-        <GeneralContainer gapProp={1}>
-          <SubContainerFull>
+        <ContainerFull
+          input={
             <InputForm
               labelProp={'Bred for'}
               event={setProperties}
               attr={'bredFor'}
             />
-          </SubContainerFull>
-          {validations.bredFor && (
-            <SubContainerFull>
-              <Typography
-                variant="body2"
-                sx={styleValidations}
-              >
-                {validations.bredFor}
-              </Typography>
-            </SubContainerFull>
-          )}
-        </GeneralContainer>
+          }
+          error={
+            <Typography
+              variant="body2"
+              sx={styleValidations}
+            >
+              {validations.bredFor}
+            </Typography>
+          }
+        />
 
-        <GeneralContainer gapProp={1}>
-          <SubContainerFull>
-            <Typography>Life Span (Years)</Typography>
-          </SubContainerFull>
-          <GeneralContainer>
-            <SubContainerMulti space={6}>
-              <InputFormNumber
-                labelProp={'From'}
-                event={setProperties}
-                attr={'lifeSpan'}
-                subAttr={'from'}
-              />
-            </SubContainerMulti>
-            <SubContainerMulti space={6}>
-              <InputFormNumber
-                labelProp={'To'}
-                event={setProperties}
-                attr={'lifeSpan'}
-                subAttr={'to'}
-              />
-            </SubContainerMulti>
-          </GeneralContainer>
-          {validations.lifeSpan && (
-            <SubContainerFull>
-              <Typography
-                variant="body2"
-                sx={styleValidations}
-              >
-                {validations.lifeSpan}
-              </Typography>
-            </SubContainerFull>
-          )}
-        </GeneralContainer>
+        <ContainerDoubleInput
+          title={<Typography>Life Span (Years)</Typography>}
+          input1={
+            <InputFormNumber
+              labelProp={'From'}
+              event={setProperties}
+              attr={'lifeSpan'}
+              subAttr={'from'}
+            />
+          }
+          input2={
+            <InputFormNumber
+              labelProp={'To'}
+              event={setProperties}
+              attr={'lifeSpan'}
+              subAttr={'to'}
+            />
+          }
+          error={
+            <Typography
+              variant="body2"
+              sx={styleValidations}
+            >
+              {validations.lifeSpan}
+            </Typography>
+          }
+        />
 
-        <GeneralContainer gapProp={1}>
-          <SubContainerMulti space={10}>
+        <ContainerSelectForm
+          select={
             <SelectForm
               defaultItem={'Select Breed Group'}
               items={attributes.breeds}
               event={setProperties}
               attr={'breed_group'}
             />
-          </SubContainerMulti>
-          <SubContainerMulti space={2}>
-            <ButtonForm buttonContent={'+'} />
-          </SubContainerMulti>
-        </GeneralContainer>
+          }
+          button={<ButtonForm buttonContent={'+'} />}
+        />
 
-        <GeneralContainer gapProp={1}>
-          <SubContainerFull>
-            <Typography>Weight (KG)</Typography>
-          </SubContainerFull>
-          <GeneralContainer>
-            <SubContainerMulti space={6}>
-              <InputFormNumber
-                labelProp={'From'}
-                event={setProperties}
-                attr={'weight'}
-                subAttr={'from'}
-              />
-            </SubContainerMulti>
-            <SubContainerMulti space={6}>
-              <InputFormNumber
-                labelProp={'To'}
-                event={setProperties}
-                attr={'weight'}
-                subAttr={'to'}
-              />
-            </SubContainerMulti>
-          </GeneralContainer>
-          {validations.weight && (
-            <SubContainerFull>
-              <Typography
-                variant="body2"
-                sx={styleValidations}
-              >
-                {validations.weight}
-              </Typography>
-            </SubContainerFull>
-          )}
-        </GeneralContainer>
+        <ContainerDoubleInput
+          title={<Typography>Weight (KG)</Typography>}
+          input1={
+            <InputFormNumber
+              labelProp={'From'}
+              event={setProperties}
+              attr={'weight'}
+              subAttr={'from'}
+            />
+          }
+          input2={
+            <InputFormNumber
+              labelProp={'To'}
+              event={setProperties}
+              attr={'weight'}
+              subAttr={'to'}
+            />
+          }
+          error={
+            <Typography
+              variant="body2"
+              sx={styleValidations}
+            >
+              {validations.weight}
+            </Typography>
+          }
+        />
 
-        <GeneralContainer gapProp={1}>
-          <SubContainerMulti space={10}>
+        <ContainerSelectMulti
+          select={
             <SelectForm
               defaultItem={'Select the temperaments'}
               items={attributes.temperaments}
               event={setAttr}
               attr={'temperament'}
             />
-          </SubContainerMulti>
-          <SubContainerMulti space={2}>
+          }
+          button={
             <ButtonForm
               buttonContent={'+'}
               event={() => dialogTools.handleAttrsState('temp')}
             />
-          </SubContainerMulti>
-          <SubContainerFull>
+          }
+          elements={
             <SelectedElements
               elements={selectedAttrs.temperament}
               deletelement={deleteAttr}
               attr={'temperament'}
             />
-          </SubContainerFull>
-        </GeneralContainer>
+          }
+        />
 
-        <GeneralContainer gapProp={1}>
-          <SubContainerMulti space={10}>
+        <ContainerSelectMulti
+          select={
             <SelectForm
               defaultItem={'Select the origin'}
               items={attributes.countries}
               event={setAttr}
               attr={'countries'}
             />
-          </SubContainerMulti>
-          <SubContainerMulti space={2}>
-            <ButtonForm buttonContent={'+'} />
-          </SubContainerMulti>
-          <SubContainerFull>
+          }
+          button={<ButtonForm buttonContent={'+'} />}
+          elements={
             <SelectedElements
               elements={selectedAttrs.countries}
               deletelement={deleteAttr}
               attr={'countries'}
             />
-          </SubContainerFull>
-        </GeneralContainer>
+          }
+        />
 
-        <SubContainerFull>
+        <Grid
+          container
+          item
+        >
           <ButtonSubmit event={handleDog} />
-        </SubContainerFull>
-      </GeneralContainer>
+        </Grid>
+      </Grid>
     </Card>
   );
 };
