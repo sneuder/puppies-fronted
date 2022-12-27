@@ -80,12 +80,12 @@ export const FilterTemp = () => {
         >
           Filter by Temps
         </MenuItem>
-        {temps.map(({ temperament, id }) => (
+        {temps.map(({ name, id }) => (
           <MenuItem
             key={id}
-            value={temperament.toLowerCase()}
+            value={name.toLowerCase()}
           >
-            {temperament}
+            {name}
           </MenuItem>
         ))}
       </Select>

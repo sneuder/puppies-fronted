@@ -9,10 +9,12 @@ const dogsSlice = createSlice({
     numPags: 0,
     formDog: {
       name: '',
-      bredFor: '',
-      breed_group: [],
-      temperament: [],
-      countries: [],
+      bred_for: '',
+      attributes: {
+        temps: [],
+        countries: [],
+        breeds: '',
+      },
       lifeSpan: {
         from: '',
         to: '',

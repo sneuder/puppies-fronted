@@ -52,9 +52,9 @@ function Dogs({ dog }) {
             container
             gap={1.5}
           >
-            {temps.map(({ temperament, id }) => (
+            {temps.map(({ name, id }) => (
               <Chip
-                label={temperament}
+                label={name}
                 key={id}
               />
             ))}

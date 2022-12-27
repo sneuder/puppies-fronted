@@ -41,9 +41,9 @@ const NavbarDesktop = ({ showOptions, handleOrder }) => {
         <Grid item>
           <FilterAlpha handleOrder={handleOrder} />
         </Grid>
-        {/* <Grid item>
+        <Grid item>
           <CreateDog />
-        </Grid> */}
+        </Grid>
       </ContainerOptions>
     </Grid>
   );
