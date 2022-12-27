@@ -124,7 +124,7 @@ const Form = () => {
             <SelectForm
               defaultItem={'Select Breed Group'}
               items={attributes.breeds}
-              event={setProperties}
+              event={setAttr}
               attr={'breeds'}
             />
           }

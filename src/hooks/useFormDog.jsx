@@ -9,6 +9,7 @@ import {
 
 import reqAxios from '../utils/axios';
 import validateForm from '../utils/validations';
+import Dog from '../models/Dog';
 
 const useFormDog = () => {
   const [attributes, setAttributes] = useState({});
@@ -25,14 +26,13 @@ const useFormDog = () => {
     const validation = {};
     validateForm(validation, dogFormData);
 
-    console.log(validation);
-
     if (Object.keys(validation).length !== 0)
       return setValidations({ ...validation });
     setValidations({ ...{} });
 
     dispatch(createdDog(true));
-    reqAxios('post', '/dogs/newDog', dogFormData, '').then((data) => {
+    reqAxios('post', '/dogs/newDog', new Dog(dogFormData), '').then((data) => {
+      console.log(data);
       dispatch(createdDog(false));
     });
   };
