@@ -32,7 +32,6 @@ const useFormDog = () => {
 
     dispatch(createdDog(true));
     reqAxios('post', '/dogs/newDog', new Dog(dogFormData), '').then((data) => {
-      console.log(data);
       dispatch(createdDog(false));
     });
   };
