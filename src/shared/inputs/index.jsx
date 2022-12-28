@@ -83,7 +83,7 @@ export const ButtonSubmit = ({ event }) => {
 };
 
 export const SelectedElements = ({ elements, deletelement, attr }) => {
-  if (!elements) return <></>;
+  if (!elements) return null;
 
   return (
     <Grid

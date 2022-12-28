@@ -32,10 +32,10 @@ const updateAttributes = (state, action) => {
 };
 
 const deleteAttributes = (state, action) => {
-  const { attribute, tempToRemove } = action.payload;
+  const { attribute, attrToRemove } = action.payload;
   state.formDog.attributes[attribute] = state.formDog.attributes[
     attribute
-  ].filter((attr) => attr !== tempToRemove);
+  ].filter((attr) => attr !== attrToRemove);
 };
 
 const updateProperties = (state, action) => {

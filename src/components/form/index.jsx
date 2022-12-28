@@ -171,7 +171,7 @@ const Form = () => {
           button={
             <ButtonForm
               buttonContent={'+'}
-              event={() => dialogTools.handleAttrsState('temp')}
+              event={() => dialogTools.handleDialogState('temp')}
             />
           }
           elements={

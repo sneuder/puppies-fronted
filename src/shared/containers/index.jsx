@@ -63,16 +63,16 @@ export const ContainerSelectForm = ({ select, button }) => {
     >
       <Grid
         item
-        xs={10}
+        xs={12}
       >
         {select}
       </Grid>
-      <Grid
+      {/* <Grid
         item
         xs={2}
       >
         {button}
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 };
@@ -87,16 +87,16 @@ export const ContainerSelectMulti = ({ select, button, elements }) => {
     >
       <Grid
         item
-        xs={10}
+        xs={12}
       >
         {select}
       </Grid>
-      <Grid
+      {/* <Grid
         item
         xs={2}
       >
         {button}
-      </Grid>
+      </Grid> */}
       <Grid
         item
         xs={12}
