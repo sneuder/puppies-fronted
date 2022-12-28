@@ -32,7 +32,10 @@ const useFormDog = () => {
 
     dispatch(createdDog(true));
     reqAxios('post', '/dogs/newDog', new Dog(dogFormData), '').then((data) => {
-      dispatch(createdDog(false));
+      if (data.id) {
+        window.alert('Puppy created');
+        dispatch(createdDog(false));
+      }
     });
   };
 
@@ -75,14 +78,16 @@ const useFormDog = () => {
     );
   };
 
-  const postAttrs = (data, attrName) => {
+  const postAttrs = (newAttr, attrName) => {
     const attrEndpoints = {
       temp: '/temps/newTemp',
       breed: '/breeds/newBreed',
       country: '/countries/newCountry',
     };
 
-    reqAxios('post', attrEndpoints[attrName], data);
+    reqAxios('post', attrEndpoints[attrName], newAttr).then((data) => {
+      console.log(data);
+    });
   };
 
   useEffect(() => {
