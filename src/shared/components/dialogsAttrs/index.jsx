@@ -9,13 +9,13 @@ import {
 } from '@mui/material';
 
 const DialogsAttrs = ({ dialogtools, postattrs }) => {
-  const { handleAttrsState, attrsState, handleSubmit, register, attrName } =
+  const { handleDialogState, dialogState, handleSubmit, register, attrName } =
     dialogtools;
 
   return (
     <Dialog
-      onClose={handleAttrsState}
-      open={attrsState}
+      onClose={handleDialogState}
+      open={dialogState}
     >
       <Card>
         <CardContent>

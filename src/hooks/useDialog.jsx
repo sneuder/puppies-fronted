@@ -3,20 +3,20 @@ import { useForm } from 'react-hook-form';
 
 const useDialog = () => {
   const [attrName, setAttrName] = useState('');
-  const [attrsState, setAttrsState] = useState(false);
+  const [dialogState, setDialogState] = useState(false);
   const { register, handleSubmit } = useForm();
 
-  const handleAttrsState = (attr) => {
+  const handleDialogState = (attr) => {
     setAttrName(attr);
-    setAttrsState(!attrsState);
+    setDialogState(!dialogState);
   };
 
   return {
     register,
     handleSubmit,
-    attrsState,
+    dialogState,
     attrName,
-    handleAttrsState,
+    handleDialogState,
   };
 };
 
